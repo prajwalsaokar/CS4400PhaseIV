@@ -1,0 +1,48 @@
+@page
+@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Employee View";
+}
+
+<h2>Employee View</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Tax ID</th>
+            <th>Salary</th>
+            <th>Hired</th>
+            <th>Experience</th>
+            <th>License ID</th>
+            <th>Successful Trips</th>
+            <th>Manager Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Employees != null && Model.Employees.Count > 0)
+        {
+            foreach (var employee in Model.Employees)
+            {
+                <tr>
+                    <td>@employee.Username</td>
+                    <td>@employee.TaxID</td>
+                    <td>@employee.Salary.ToString("C")</td> <!-- Format as currency -->
+                    <td>@employee.Hired.ToString("yyyy-MM-dd")</td> <!-- Format date -->
+                    <td>@employee.Experience</td>
+                    <td>@employee.LicenseID</td>
+                    <td>@employee.SuccessfulTrips</td>
+                    <td>@employee.Manager</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8">No data available.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>
