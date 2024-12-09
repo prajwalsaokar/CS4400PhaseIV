@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="update core repo">
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +30,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2prhHpLyErjbxlCbEiLaSTftvWH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -32,6 +40,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.BusinessAPI: http.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Docker.BusinessAPI/Dockerfile.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -44,6 +53,9 @@
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ],
     "rider.external.source.directories": [
       "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
       "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
@@ -120,7 +132,8 @@
       <option name="presentableId" value="Default" />
       <updated>1733530021220</updated>
       <workItem from="1733530025064" duration="11228000" />
-      <workItem from="1733705053243" duration="4200000" />
+      <workItem from="1733705053243" duration="5077000" />
+      <workItem from="1733734686289" duration="1731000" />
     </task>
     <task id="LOCAL-00001" summary="update core repo">
       <option name="closed" value="true" />
@@ -130,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733705131003</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1733726334634</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733726334634</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +159,9 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update core repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="update core repo" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
 </project>

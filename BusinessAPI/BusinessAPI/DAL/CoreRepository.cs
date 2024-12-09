@@ -16,22 +16,32 @@ public class CoreRepository
     {
         _connectionString = options.Value.ConnectionString;
     }
-    public async Task AddOwner(string username)
-    {
-        using (var connection = new MySqlConnection(_connectionString))
-        {
-            var parameters = new { Username = username };
-            await connection.ExecuteAsync("add_owner", parameters, commandType: CommandType.StoredProcedure);
-        }
-    }
-
-    public async Task AddEmployee(string username, string taxID, DateTime hired, int experience, int salary)
+    public async Task AddOwner(string username, string firstName, string lastName, string address, DateTime birthdate)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
             var parameters = new
             {
                 Username = username,
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                Birthdate = birthdate
+            };
+            await connection.ExecuteAsync("add_owner", parameters, commandType: CommandType.StoredProcedure);
+        }
+    }
+    public async Task AddEmployee(string username, string firstName, string lastName, string address, DateTime birthdate, string taxID, DateTime hired, int experience, int salary)
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            var parameters = new
+            {
+                Username = username,
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                Birthdate = birthdate,
                 TaxID = taxID,
                 Hired = hired,
                 Experience = experience,
@@ -40,8 +50,7 @@ public class CoreRepository
             await connection.ExecuteAsync("add_employee", parameters, commandType: CommandType.StoredProcedure);
         }
     }
-
-    public async Task AddDriverRole(string username, string licenseID, string licenseType, int successfulTrips)
+    public async Task AddDriverRole(string username, string licenseID, string licenseType, int driverExperience)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
@@ -50,7 +59,7 @@ public class CoreRepository
                 Username = username,
                 LicenseID = licenseID,
                 LicenseType = licenseType,
-                SuccessfulTrips = successfulTrips
+                DriverExperience = driverExperience
             };
             await connection.ExecuteAsync("add_driver_role", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -142,7 +151,7 @@ public class CoreRepository
         }
     }
 
-    public async Task StartFunding(string username, int invested, DateTime investedDate, string business)
+    public async Task StartFunding(string username, int invested, string business, DateTime investedDate)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
@@ -150,8 +159,9 @@ public class CoreRepository
             {
                 Username = username,
                 Invested = invested,
-                InvestedDate = investedDate,
-                Business = business
+                Business = business,
+                InvestedDate = investedDate
+
             };
             await connection.ExecuteAsync("start_funding", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -170,37 +180,41 @@ public class CoreRepository
         }
     }
 
-    public async Task FireEmployee(string username)
-    {
-        using (var connection = new MySqlConnection(_connectionString))
-        {
-            var parameters = new { Username = username };
-            await connection.ExecuteAsync("fire_employee", parameters, commandType: CommandType.StoredProcedure);
-        }
-    }
-
-    public async Task ManageService(string id, string manager)
+    public async Task FireEmployee(string username, string id)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
             var parameters = new
             {
-                Id = id,
-                Manager = manager
+                Username = username,
+                Id = id
+            };
+            await connection.ExecuteAsync("fire_employee", parameters, commandType: CommandType.StoredProcedure);
+        }
+    }
+
+    public async Task ManageService(string username, string id)
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            var parameters = new
+            {
+                Username = username,
+                Id = id
             };
             await connection.ExecuteAsync("manage_service", parameters, commandType: CommandType.StoredProcedure);
         }
     }
 
-    public async Task TakeOverVan(string id, int tag, string username)
+    public async Task TakeOverVan(string username, string id, int tag)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
             var parameters = new
             {
+                Username = username,
                 Id = id,
-                Tag = tag,
-                Username = username
+                Tag = tag
             };
             await connection.ExecuteAsync("takeover_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -236,7 +250,7 @@ public class CoreRepository
         }
     }
 
-    public async Task DriveVan(string id, int tag, string username, int distance)
+    public async Task DriveVan(string id, int tag, string destination)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
@@ -244,27 +258,27 @@ public class CoreRepository
             {
                 Id = id,
                 Tag = tag,
-                Username = username,
-                Distance = distance
+                Destination = destination
             };
             await connection.ExecuteAsync("drive_van", parameters, commandType: CommandType.StoredProcedure);
         }
     }
 
-    public async Task PurchaseProduct(string barcode, int quantity, int totalPrice)
+    public async Task PurchaseProduct(string longName, string id, int tag, string barcode, int quantity)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
             var parameters = new
             {
+                LongName = longName,
+                Id = id,
+                Tag = tag,
                 Barcode = barcode,
-                Quantity = quantity,
-                TotalPrice = totalPrice
+                Quantity = quantity
             };
             await connection.ExecuteAsync("purchase_product", parameters, commandType: CommandType.StoredProcedure);
         }
     }
-
     public async Task RemoveProduct(string barcode)
     {
         using (var connection = new MySqlConnection(_connectionString))
