@@ -2,21 +2,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BusinessAPI.DAL.Models.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BusinessAPI.DAL;
 
 public class OwnerViewModel : PageModel
 {
-    private readonly IOwnerService _ownerService;
+    private readonly CoreRepository _coreRepository;
 
     public List<OwnerView> Owners { get; set; }
 
-    public OwnerViewModel(IOwnerService ownerService)
+    public OwnerViewModel(CoreRepository coreRepository)
     {
-        _ownerService = ownerService;
+        _coreRepository = coreRepository;
     }
 
     public async Task OnGetAsync()
     {
-        // Fetch data from the database using the service
-        Owners = await _ownerService.GetOwnerView();
+        Owners = await _coreRepository.GetOwnerView();
     }
 }

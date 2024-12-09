@@ -2,21 +2,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BusinessAPI.DAL.Models.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BusinessAPI.DAL;
 
 public class EmployeeViewModel : PageModel
 {
-    private readonly IEmployeeService _employeeService;
+    private readonly CoreRepository _coreRepository;
 
     public List<EmployeeView> Employees { get; set; }
 
-    public EmployeeViewModel(IEmployeeService employeeService)
+    public EmployeeViewModel(CoreRepository coreRepository)
     {
-        _employeeService = employeeService;
+        _coreRepository = coreRepository;
     }
 
     public async Task OnGetAsync()
     {
-        // Fetch data from the database using the service
-        Employees = await _employeeService.GetEmployeeView();
+        Employees = await _coreRepository.GetEmployeeView();
     }
 }
