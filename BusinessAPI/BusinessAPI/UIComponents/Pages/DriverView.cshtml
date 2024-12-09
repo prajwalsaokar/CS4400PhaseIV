@@ -1,0 +1,31 @@
+@page
+@model DriverViewModel
+@{
+    ViewData["Title"] = "Driver View";
+}
+
+<h2>Driver View</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>License ID</th>
+            <th>Successful Trips</th>
+            <th>Number of Vans</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var driver in Model.Drivers)
+        {
+            <tr>
+                <td>@driver.Username</td>
+                <td>@driver.LicenseID</td>
+                <td>@driver.SuccessfulTrips</td>
+                <td>@driver.VanCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>
