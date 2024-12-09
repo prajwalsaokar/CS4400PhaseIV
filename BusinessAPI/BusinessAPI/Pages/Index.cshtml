@@ -142,7 +142,7 @@ ul#navbarNav li {
     <!-- Add Owner -->
     <div class="procedure">
         <h2>Add Owner</h2>
-        <form method="post" asp-action="AddOwner">
+        <form method="post" asp-action="/api/v1/add-owner">
             <input type="text" name="username" placeholder="Username" />
             <input type="text" name="firstName" placeholder="First Name" />
             <input type="text" name="lastName" placeholder="Last Name" />
@@ -156,7 +156,7 @@ ul#navbarNav li {
     <!-- Add Employee -->
     <div class="procedure">
         <h2>Add Employee</h2>
-        <form method="post" asp-action="AddEmployee">
+        <form method="post" asp-action="/api/v1/add-employee">
             <input type="text" name="username" placeholder="Username" />
             <input type="text" name="firstName" placeholder="First Name" />
             <input type="text" name="lastName" placeholder="Last Name" />
@@ -174,7 +174,7 @@ ul#navbarNav li {
     <!-- Add Driver Role -->
     <div class="procedure">
         <h2>Add Driver Role</h2>
-        <form method="post" asp-action="AddDriverRole">
+        <form method="post" asp-action="/api/v1/add-driver-role">
             <input type="text" name="username" placeholder="Username" />
             <input type="text" name="licenseID" placeholder="License ID" />
             <input type="number" name="driverExperience" placeholder="Driver Experience" />
@@ -187,7 +187,7 @@ ul#navbarNav li {
     <!-- Add Product -->
     <div class="procedure">
         <h2>Add Product</h2>
-        <form method="post" asp-action="AddProduct">
+        <form method="post" asp-action="/api/v1/add-product">
             <input type="text" name="barcode" placeholder="Barcode" />
             <input type="text" name="iname" placeholder="Name" />
             <input type="number" name="weight" placeholder="Weight" />
@@ -199,7 +199,7 @@ ul#navbarNav li {
     <!-- Add Van -->
     <div class="procedure">
         <h2>Add Van</h2>
-        <form method="post" asp-action="AddVan">
+        <form method="post" asp-action="/api/v1/add-van">
             <input type="text" name="id" placeholder="Van ID" />
             <input type="number" name="tag" placeholder="Tag" />
             <input type="number" name="fuel" placeholder="Fuel Amount" />
@@ -214,7 +214,7 @@ ul#navbarNav li {
     <!-- Add Business -->
     <div class="procedure">
         <h2>Add Business</h2>
-        <form method="post" asp-action="AddBusiness">
+        <form method="post" asp-action="/api/v1/add-business">
             <input type="text" name="longName" placeholder="Long Name" />
             <input type="number" name="rating" placeholder="Rating" />
             <input type="number" name="spent" placeholder="Spent" />
@@ -240,7 +240,7 @@ ul#navbarNav li {
     <!-- Add Location -->
     <div class="procedure">
         <h2>Add Location</h2>
-        <form method="post" asp-action="AddLocation">
+        <form method="post" asp-action="add-location" asp-controller="Service">
             <input type="text" name="label" placeholder="Label" />
             <input type="number" name="xCoord" placeholder="X Coordinate" />
             <input type="number" name="yCoord" placeholder="Y Coordinate" />

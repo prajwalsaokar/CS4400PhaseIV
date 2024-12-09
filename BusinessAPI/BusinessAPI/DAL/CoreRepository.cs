@@ -4,6 +4,7 @@ using System.Data;
 using BusinessAPI.Config;
 using BusinessAPI.DAL.Models;
 using BusinessAPI.DAL.Models.Views;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
 
@@ -22,11 +23,11 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address,
-                Birthdate = birthdate
+                ip_username = username,
+                ip_first_name = firstName,
+                ip_lastt_name = lastName,
+                ip_address = address,
+                ip_birthdate = birthdate
             };
             await connection.ExecuteAsync("add_owner", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -37,15 +38,15 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address,
-                Birthdate = birthdate,
-                TaxID = taxID,
-                Hired = hired,
-                Experience = experience,
-                Salary = salary
+                ip_username = username,
+                ip_first_name = firstName,
+                ip_last_name = lastName,
+                ip_address = address,
+                ip_birthdate = birthdate,
+                ip_taxID = taxID,
+                ip_hired = hired,
+                ip_employee_experience = experience,
+                ip_salary = salary
             };
             await connection.ExecuteAsync("add_employee", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -56,10 +57,10 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                LicenseID = licenseID,
-                LicenseType = licenseType,
-                DriverExperience = driverExperience
+                ip_username = username,
+                ip_license_id = licenseID,
+                ip_license_type = licenseType,
+                ip_driver_experience = driverExperience
             };
             await connection.ExecuteAsync("add_driver_role", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -70,7 +71,10 @@ public class CoreRepository
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
-            var parameters = new { Username = username };
+            var parameters = new
+            {
+                ip_username = username
+            };
             await connection.ExecuteAsync("add_worker_role", parameters, commandType: CommandType.StoredProcedure);
         }
     }
@@ -81,9 +85,9 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Barcode = barcode,
-                Iname = iname,
-                Weight = weight
+                ip_barcode = barcode,
+                ip_iname = iname,
+                ip_weight = weight
             };
             await connection.ExecuteAsync("add_product", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -95,12 +99,12 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Id = id,
-                Tag = tag,
-                Fuel = fuel,
-                Capacity = capacity,
-                Sales = sales,
-                DrivenBy = drivenBy,
+                ip_id = id,
+                ip_tag = tag,
+                ip_fuel = fuel,
+                ip_capacity = capacity,
+                ip_sales = sales,
+                ip_driven_by = drivenBy
             };  
             await connection.ExecuteAsync("add_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -112,10 +116,10 @@ public class CoreRepository
         {
             var parameters = new
             {
-                LongName = longName,
-                Rating = rating,
-                Spent = spent,
-                Location = location
+                ip_long_name = longName,
+                ip_rating = rating,
+                ip_spent = spent,
+                ip_location = location
             };
             await connection.ExecuteAsync("add_business", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -127,25 +131,25 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Id = id,
-                LongName = longName,
-                HomeBase = homeBase,
-                Manager = manager
+                ip_id = id,
+                ip_long_name = longName,
+                ip_home_base = homeBase,
+                ip_manager = manager
             };
             await connection.ExecuteAsync("add_service", parameters, commandType: CommandType.StoredProcedure);
         }
     }
 
-    public async Task AddLocation(string label, int xCoord, int yCoord, int? space)
+    public async Task AddLocation([FromForm] string label, int xCoord, int yCoord, int? space)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
             var parameters = new
             {
-                Label = label,
-                XCoord = xCoord,
-                YCoord = yCoord,
-                Space = space
+                ip_label = label,
+                ip_x_coord = xCoord,
+                ip_y_coord = yCoord,
+                ip_space = space
             };
             await connection.ExecuteAsync("add_location", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -157,10 +161,10 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                Invested = invested,
-                Business = business,
-                InvestedDate = investedDate
+                ip_username = username,
+                ip_invested = invested,
+                ip_business = business,
+                ip_invested_date = investedDate
 
             };
             await connection.ExecuteAsync("start_funding", parameters, commandType: CommandType.StoredProcedure);
@@ -173,8 +177,8 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                Id = id
+                ip_username = username,
+                ip_id = id
             };
             await connection.ExecuteAsync("hire_employee", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -186,8 +190,8 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                Id = id
+                ip_username = username,
+                ip_id = id
             };
             await connection.ExecuteAsync("fire_employee", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -199,8 +203,8 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                Id = id
+                ip_username = username,
+                ip_id = id
             };
             await connection.ExecuteAsync("manage_service", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -212,9 +216,9 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Username = username,
-                Id = id,
-                Tag = tag
+                ip_username = username,
+                ip_id = id,
+                ip_tag = tag
             };
             await connection.ExecuteAsync("takeover_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -226,11 +230,11 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Id = id,
-                Tag = tag,
-                Barcode = barcode,
-                Quantity = quantity,
-                Price = price
+                ip_id = id,
+                ip_tag = tag,
+                ip_barcode = barcode,
+                ip_quantity = quantity,
+                ip_price = price
             };
             await connection.ExecuteAsync("load_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -242,9 +246,9 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Id = id,
-                Tag = tag,
-                FuelAmount = fuelAmount
+                ip_id = id,
+                ip_tag = tag,
+                ip_fuel_amount = fuelAmount
             };
             await connection.ExecuteAsync("refuel_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -256,9 +260,9 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Id = id,
-                Tag = tag,
-                Destination = destination
+                ip_id = id,
+                ip_tag = tag,
+                ip_destination = destination
             };
             await connection.ExecuteAsync("drive_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -270,11 +274,11 @@ public class CoreRepository
         {
             var parameters = new
             {
-                LongName = longName,
-                Id = id,
-                Tag = tag,
-                Barcode = barcode,
-                Quantity = quantity
+                ip_long_name = longName,
+                ip_id = id,
+                ip_tag = tag,
+                ip_barcode = barcode,
+                ip_quantity = quantity
             };
             await connection.ExecuteAsync("purchase_product", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -283,7 +287,10 @@ public class CoreRepository
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
-            var parameters = new { Barcode = barcode };
+            var parameters = new
+            {
+                ip_barcode = barcode
+            };
             await connection.ExecuteAsync("remove_product", parameters, commandType: CommandType.StoredProcedure);
         }
     }
@@ -294,8 +301,8 @@ public class CoreRepository
         {
             var parameters = new
             {
-                Id = id,
-                Tag = tag
+                ip_id = id,
+                ip_tag = tag
             };
             await connection.ExecuteAsync("remove_van", parameters, commandType: CommandType.StoredProcedure);
         }
@@ -305,7 +312,10 @@ public class CoreRepository
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
-            var parameters = new { Username = username };
+            var parameters = new
+            {
+                ip_username = username
+            };
             await connection.ExecuteAsync("remove_driver_role", parameters, commandType: CommandType.StoredProcedure);
         }
     }
