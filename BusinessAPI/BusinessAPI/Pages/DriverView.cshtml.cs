@@ -2,20 +2,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BusinessAPI.DAL.Models.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BusinessAPI.DAL;
 
 public class DriverViewModel : PageModel
 {
-    private readonly IDriverService _driverService;
+    private readonly CoreRepository _coreRepository;
 
     public List<DriverView> Drivers { get; set; }
 
-    public DriverViewModel(IDriverService driverService)
+    public DriverViewModel(CoreRepository coreRepository)
     {
-        _driverService = driverService;
+        _coreRepository = coreRepository;
     }
 
     public async Task OnGetAsync()
     {
-        Drivers = await _driverService.GetDriverView();
+        Drivers = await _coreRepository.GetDriverView();
     }
 }
