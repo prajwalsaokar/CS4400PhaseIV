@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using BusinessAPI.Config;
 using BusinessAPI.DAL.Models;
+using BusinessAPI.DAL.Models.Views;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
 
@@ -14,13 +15,6 @@ public class CoreRepository
     public CoreRepository(IOptions<DatabaseOptions> options)
     {
         _connectionString = options.Value.ConnectionString;
-    }
-    public async Task<IEnumerable<User>> GetUsers()
-    {
-        using (var connection = new MySqlConnection(_connectionString))
-        {
-            return await connection.QueryAsync<User>("GetUsers", commandType: CommandType.StoredProcedure);
-        }
     }
     public async Task AddOwner(string username)
     {
@@ -86,7 +80,7 @@ public class CoreRepository
         }
     }
 
-    public async Task AddVan(string id, int tag, int fuel, int capacity, int sales, string drivenBy, string locatedAt)
+    public async Task AddVan(string id, int tag, int fuel, int capacity, int sales, string drivenBy)
     {
         using (var connection = new MySqlConnection(_connectionString))
         {
@@ -98,8 +92,7 @@ public class CoreRepository
                 Capacity = capacity,
                 Sales = sales,
                 DrivenBy = drivenBy,
-                LocatedAt = locatedAt
-            };
+            };  
             await connection.ExecuteAsync("add_van", parameters, commandType: CommandType.StoredProcedure);
         }
     }
@@ -302,4 +295,57 @@ public class CoreRepository
             await connection.ExecuteAsync("remove_driver_role", parameters, commandType: CommandType.StoredProcedure);
         }
     }
+    public async Task<List<OwnerView>> GetOwnerView()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            const string query = "SELECT * FROM display_owner_view";
+            return (await connection.QueryAsync<OwnerView>(query)).ToList();
+        }
+    }
+
+    public async Task<List<EmployeeView>> GetEmployeeView()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            const string query = "SELECT * FROM display_employee_view";
+            return (await connection.QueryAsync<EmployeeView>(query)).ToList();
+        }
+    }
+
+    public async Task<List<DriverView>> GetDriverView()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            const string query = "SELECT * FROM display_driver_view";
+            return (await connection.QueryAsync<DriverView>(query)).ToList();
+        }
+    }
+
+    public async Task<List<LocationView>> GetLocationView()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            const string query = "SELECT * FROM display_location_view";
+            return (await connection.QueryAsync<LocationView>(query)).ToList();
+        }
+    }
+
+    public async Task<List<ProductView>> GetProductView()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            const string query = "SELECT * FROM display_product_view";
+            return (await connection.QueryAsync<ProductView>(query)).ToList();
+        }
+    }
+
+    public async Task<List<ServiceView>> GetServiceView()
+    {
+        using (var connection = new MySqlConnection(_connectionString))
+        {
+            const string query = "SELECT * FROM display_service_view";
+            return (await connection.QueryAsync<ServiceView>(query)).ToList();
+        }
+    }   
 }
