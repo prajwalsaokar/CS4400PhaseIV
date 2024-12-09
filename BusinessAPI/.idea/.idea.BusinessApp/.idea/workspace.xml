@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" afterDir="false" />
-    </list>
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix core repo and nuke controller" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ed782f763dd24627a12db7a3f63ac892cca00/04/5127fe4e/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -133,7 +126,7 @@
       <updated>1733530021220</updated>
       <workItem from="1733530025064" duration="11228000" />
       <workItem from="1733705053243" duration="5077000" />
-      <workItem from="1733734686289" duration="1731000" />
+      <workItem from="1733734686289" duration="2118000" />
     </task>
     <task id="LOCAL-00001" summary="update core repo">
       <option name="closed" value="true" />
@@ -151,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733726334634</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix core repo and nuke controller">
+      <option name="closed" value="true" />
+      <created>1733736576943</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733736576943</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +163,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update core repo" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="fix core repo and nuke controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix core repo and nuke controller" />
   </component>
 </project>
