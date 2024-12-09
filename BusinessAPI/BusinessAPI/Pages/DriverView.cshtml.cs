@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessAPI.DAL;
 
+namespace BusinessAPI.Pages;
 public class DriverViewModel : PageModel
 {
     private readonly CoreRepository _coreRepository;

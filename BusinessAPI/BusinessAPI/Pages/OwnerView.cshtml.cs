@@ -3,6 +3,7 @@ using BusinessAPI.DAL.Models.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessAPI.DAL;
+namespace BusinessAPI.Pages;
 
 public class OwnerViewModel : PageModel
 {

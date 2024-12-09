@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessAPI.DAL;
 
+namespace BusinessAPI.Pages;
+
 public class EmployeeViewModel : PageModel
 {
     private readonly CoreRepository _coreRepository;

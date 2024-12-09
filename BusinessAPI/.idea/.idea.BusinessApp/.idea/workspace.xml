@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix core repo and nuke controller" />
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix html code">
+      <change afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BusinessAPI/Pages/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +31,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/Pages/DriverView.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/Pages/EmployeeView.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ed782f763dd24627a12db7a3f63ac892cca00/04/5127fe4e/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -126,7 +145,7 @@
       <updated>1733530021220</updated>
       <workItem from="1733530025064" duration="11228000" />
       <workItem from="1733705053243" duration="5077000" />
-      <workItem from="1733734686289" duration="2118000" />
+      <workItem from="1733734686289" duration="5037000" />
     </task>
     <task id="LOCAL-00001" summary="update core repo">
       <option name="closed" value="true" />
@@ -152,7 +171,39 @@
       <option name="project" value="LOCAL" />
       <updated>1733736576943</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix dir structure">
+      <option name="closed" value="true" />
+      <created>1733736891296</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733736891296</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix driver view integration code">
+      <option name="closed" value="true" />
+      <created>1733736945900</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733736945900</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed all current view codes">
+      <option name="closed" value="true" />
+      <created>1733737012815</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733737012815</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix html code">
+      <option name="closed" value="true" />
+      <created>1733737077446</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733737077446</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +215,10 @@
     <MESSAGE value="update core repo" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="fix core repo and nuke controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix core repo and nuke controller" />
+    <MESSAGE value="fix dir structure" />
+    <MESSAGE value="fix driver view integration code" />
+    <MESSAGE value="fixed all current view codes" />
+    <MESSAGE value="fix html code" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix html code" />
   </component>
 </project>
