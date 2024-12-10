@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix some viewmodel nonsense">
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix location view model again">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +22,7 @@
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/DAL/Models/Views/DriverView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/DAL/Models/Views/EmployeeView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
@@ -46,33 +47,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.BusinessAPI: http.executor&quot;: &quot;Run&quot;,
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Docker.BusinessAPI/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.BusinessAPI: http.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Docker.BusinessAPI/Dockerfile.executor": "Run",
+    "HTTP Request.BusinessAPI | #1.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
-      &quot;/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
-      &quot;/Users/prajwal/.local/share/Symbols/src&quot;
+    "rider.external.source.directories": [
+      "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
+      "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
+      "/Users/prajwal/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.BusinessAPI: http">
+    <configuration name="BusinessAPI | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="BusinessAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/BusinessAPI/BusinessAPI.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -131,6 +136,11 @@
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.BusinessAPI | #1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -257,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733825797056</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix location view model again">
+      <option name="closed" value="true" />
+      <created>1733826514438</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1733826514438</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +298,7 @@
     <MESSAGE value="fix views again" />
     <MESSAGE value="fixed views again" />
     <MESSAGE value="fix some viewmodel nonsense" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix some viewmodel nonsense" />
+    <MESSAGE value="fix location view model again" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix location view model again" />
   </component>
 </project>

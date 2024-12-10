@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Threading.Tasks;
 using BusinessAPI.DAL;
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace BusinessAPI.Pages;
 
 public class IndexModel : PageModel
@@ -55,15 +57,18 @@ public class IndexModel : PageModel
     
     [BindProperty]
     public StartFundingModel StartFundingForm { get; set; } 
+    
     [BindProperty]
     public AddLocationModel AddLocationForm { get; set; }  
 
     public async Task<IActionResult> OnPostAsync()
     {
+
         try
         {
+            Console.WriteLine($"FormId: {FormId}");
             switch (FormId)
-            {
+            { 
                 case "AddOwner":
                     await _repository.AddOwner(
                         AddOwnerForm.Username,
@@ -198,7 +203,21 @@ public class IndexModel : PageModel
                     );
                     break;
 
-                case "AddLocation": // Added AddLocation logic
+                case "AddLocation":  
+                    Console.WriteLine($"FormId: {FormId}");
+                    Console.WriteLine($"Label: {AddLocationForm.Label}");
+                    Console.WriteLine($"XCoord: {AddLocationForm.XCoord}");
+                    Console.WriteLine($"YCoord: {AddLocationForm.YCoord}");
+                    Console.WriteLine($"Space: {AddLocationForm.Space}");
+                    if (!ModelState.IsValid)
+                    {
+                        foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            Console.WriteLine($"Error: {error.ErrorMessage}");
+                        }
+                        return BadRequest("Invalid model state.");
+                    }
+                    
                     await _repository.AddLocation(
                         AddLocationForm.Label,
                         AddLocationForm.XCoord,

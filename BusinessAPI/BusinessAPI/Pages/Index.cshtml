@@ -156,11 +156,11 @@ ul#navbarNav li {
         <h2>Add Owner</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="AddOwner" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="text" name="FirstName" placeholder="First Name" />
-            <input type="text" name="LastName" placeholder="Last Name" />
-            <input type="text" name="Address" placeholder="Address" />
-            <input type="date" name="Birthdate" placeholder="Birthdate" />
+            <input type="text" name="AddOwnerForm.Username" placeholder="Username" />
+            <input type="text" name="AddOwnerForm.FirstName" placeholder="First Name" />
+            <input type="text" name="AddOwnerForm.LastName" placeholder="Last Name" />
+            <input type="text" name="AddOwnerForm.Address" placeholder="Address" />
+            <input type="date" name="AddOwnerForm.Birthdate" placeholder="Birthdate" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
@@ -171,15 +171,15 @@ ul#navbarNav li {
         <h2>Add Employee</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="AddEmployee" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="text" name="FirstName" placeholder="First Name" />
-            <input type="text" name="LastName" placeholder="Last Name" />
-            <input type="text" name="Address" placeholder="Address" />
-            <input type="date" name="Birthdate" placeholder="Birthdate" />
-            <input type="text" name="TaxID" placeholder="Tax ID" />
-            <input type="date" name="HiredDate" placeholder="Hired Date" />
-            <input type="number" name="Salary" placeholder="Salary" />
-            <input type="number" name="Experience" placeholder="Experience" />
+            <input type="text" name="AddEmployeeForm.Username" placeholder="Username" />
+            <input type="text" name="AddEmployeeForm.FirstName" placeholder="First Name" />
+            <input type="text" name="AddEmployeeForm.LastName" placeholder="Last Name" />
+            <input type="text" name="AddEmployeeForm.Address" placeholder="Address" />
+            <input type="date" name="AddEmployeeForm.Birthdate" placeholder="Birthdate" />
+            <input type="text" name="AddEmployeeForm.TaxID" placeholder="Tax ID" />
+            <input type="date" name="AddEmployeeForm.HiredDate" placeholder="Hired Date" />
+            <input type="number" name="AddEmployeeForm.Salary" placeholder="Salary" />
+            <input type="number" name="AddEmployeeForm.Experience" placeholder="Experience" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
@@ -190,10 +190,10 @@ ul#navbarNav li {
         <h2>Add Driver Role</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="AddDriverRole" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="text" name="LicenseID" placeholder="License ID" />
-            <input type="text" name="LicenseType" placeholder="License Type" />
-            <input type="number" name="DriverExperience" placeholder="Driver Experience" />
+            <input type="text" name="AddDriverRoleForm.Username" placeholder="Username" />
+            <input type="text" name="AddDriverRoleForm.LicenseID" placeholder="License ID" />
+            <input type="text" name="AddDriverRoleForm.LicenseType" placeholder="License Type" />
+            <input type="number" name="AddDriverRoleForm.DriverExperience" placeholder="Driver Experience" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
@@ -204,9 +204,9 @@ ul#navbarNav li {
         <h2>Add Product</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="AddProduct" />
-            <input type="text" name="Barcode" placeholder="Barcode" />
-            <input type="text" name="Name" placeholder="Name" />
-            <input type="number" name="Weight" placeholder="Weight" />
+            <input type="text" name="AddProductForm.Barcode" placeholder="Barcode" />
+            <input type="text" name="AddProductForm.Name" placeholder="Name" />
+            <input type="number" name="AddProductForm.Weight" placeholder="Weight" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
@@ -217,12 +217,12 @@ ul#navbarNav li {
         <h2>Add Van</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="AddVan" />
-            <input type="text" name="VanID" placeholder="Van ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
-            <input type="number" name="Fuel" placeholder="Fuel Amount" />
-            <input type="number" name="Capacity" placeholder="Load Capacity" />
-            <input type="number" name="Sales" placeholder="Sales" />
-            <input type="text" name="DrivenBy" placeholder="Driven By" />
+            <input type="text" name="AddVanForm.VanID" placeholder="Van ID" />
+            <input type="number" name="AddVanForm.Tag" placeholder="Tag" />
+            <input type="number" name="AddVanForm.Fuel" placeholder="Fuel Amount" />
+            <input type="number" name="AddVanForm.Capacity" placeholder="Load Capacity" />
+            <input type="number" name="AddVanForm.Sales" placeholder="Sales" />
+            <input type="text" name="AddVanForm.DrivenBy" placeholder="Driven By" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
@@ -233,52 +233,34 @@ ul#navbarNav li {
         <h2>Add Business</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="AddBusiness" />
-            <input type="text" name="LongName" placeholder="Long Name" />
-            <input type="number" name="Rating" placeholder="Rating" />
-            <input type="number" name="Spent" placeholder="Spent" />
-            <input type="text" name="Location" placeholder="Location" />
+            <input type="text" name="AddBusinessForm.LongName" placeholder="Long Name" />
+            <input type="number" name="AddBusinessForm.Rating" placeholder="Rating" />
+            <input type="number" name="AddBusinessForm.Spent" placeholder="Spent" />
+            <input type="text" name="AddBusinessForm.Location" placeholder="Location" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
     </div>
-
-    <!-- Add Service -->
-    <div class="procedure">
-        <h2>Add Service</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddService" />
-            <input type="text" name="ServiceID" placeholder="Service ID" />
-            <input type="text" name="LongName" placeholder="Long Name" />
-            <input type="text" name="HomeBase" placeholder="Home Base" />
-            <input type="text" name="Manager" placeholder="Manager" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Add Location -->
-    <div class="procedure">
-        <h2>Add Location</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddLocation" />
-            <input type="text" name="Label" placeholder="Label" />
-            <input type="number" name="XCoord" placeholder="X Coordinate" />
-            <input type="number" name="YCoord" placeholder="Y Coordinate" />
-            <input type="number" name="Space" placeholder="Space" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Start Funding -->
+<div class="procedure">
+    <h2>Add Location</h2>
+    <form method="post">
+        <input type="hidden" name="FormId" value="AddLocation" />
+        <input type="text" name="AddLocationForm.Label" placeholder="Label" />
+        <input type="number" name="AddLocationForm.XCoord" placeholder="X Coordinate" />
+        <input type="number" name="AddLocationForm.YCoord" placeholder="Y Coordinate" />
+        <input type="number" name="AddLocationForm.Space" placeholder="Space" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
     <div class="procedure">
         <h2>Start Funding</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="StartFunding" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="number" name="Invested" placeholder="Amount" />
-            <input type="text" name="Business" placeholder="Business" />
-            <input type="date" name="InvestedDate" placeholder="Fund Date" />
+            <input type="text" name="StartFundingForm.Username" placeholder="Username" />
+            <input type="number" name="StartFundingForm.Invested" placeholder="Amount" />
+            <input type="text" name="StartFundingForm.Business" placeholder="Business" />
+            <input type="date" name="StartFundingForm.InvestedDate" placeholder="Fund Date" />
             <button type="submit">Start</button>
             <button type="reset">Cancel</button>
         </form>
@@ -289,8 +271,8 @@ ul#navbarNav li {
         <h2>Hire Employee</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="HireEmployee" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="text" name="ID" placeholder="ID" />
+            <input type="text" name="HireEmployeeForm.Username" placeholder="Username" />
+            <input type="text" name="HireEmployeeForm.ID" placeholder="ID" />
             <button type="submit">Hire</button>
             <button type="reset">Cancel</button>
         </form>
@@ -301,8 +283,8 @@ ul#navbarNav li {
         <h2>Fire Employee</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="FireEmployee" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="text" name="ID" placeholder="ID" />
+            <input type="text" name="FireEmployeeForm.Username" placeholder="Username" />
+            <input type="text" name="FireEmployeeForm.ID" placeholder="ID" />
             <button type="submit">Remove</button>
             <button type="reset">Cancel</button>
         </form>
@@ -313,8 +295,8 @@ ul#navbarNav li {
         <h2>Manage Service</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="ManageService" />
-            <input type="text" name="ID" placeholder="ID" />
-            <input type="text" name="Username" placeholder="Username" />
+            <input type="text" name="ManageServiceForm.ID" placeholder="ID" />
+            <input type="text" name="ManageServiceForm.Username" placeholder="Username" />
             <button type="submit">Begin</button>
             <button type="reset">Cancel</button>
         </form>
@@ -325,9 +307,9 @@ ul#navbarNav li {
         <h2>Takeover Van</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="TakeOverVan" />
-            <input type="text" name="Username" placeholder="Username" />
-            <input type="text" name="VanID" placeholder="Van ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
+            <input type="text" name="TakeOverVanForm.Username" placeholder="Username" />
+            <input type="text" name="TakeOverVanForm.VanID" placeholder="Van ID" />
+            <input type="number" name="TakeOverVanForm.Tag" placeholder="Tag" />
             <button type="submit">Add</button>
             <button type="reset">Cancel</button>
         </form>
@@ -338,11 +320,11 @@ ul#navbarNav li {
         <h2>Load Van</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="LoadVan" />
-            <input type="text" name="VanID" placeholder="Van ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
-            <input type="text" name="Barcode" placeholder="Barcode" />
-            <input type="number" name="Quantity" placeholder="Num. Packages" />
-            <input type="number" name="Price" placeholder="Price" />
+            <input type="text" name="LoadVanForm.VanID" placeholder="Van ID" />
+            <input type="number" name="LoadVanForm.Tag" placeholder="Tag" />
+            <input type="text" name="LoadVanForm.Barcode" placeholder="Barcode" />
+            <input type="number" name="LoadVanForm.Quantity" placeholder="Num. Packages" />
+            <input type="number" name="LoadVanForm.Price" placeholder="Price" />
             <button type="submit">Deliver</button>
             <button type="reset">Cancel</button>
         </form>
@@ -353,9 +335,9 @@ ul#navbarNav li {
         <h2>Refuel Van</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="RefuelVan" />
-            <input type="text" name="VanID" placeholder="Van ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
-            <input type="number" name="FuelAmount" placeholder="More Fuel" />
+            <input type="text" name="RefuelVanForm.VanID" placeholder="Van ID" />
+            <input type="number" name="RefuelVanForm.Tag" placeholder="Tag" />
+            <input type="number" name="RefuelVanForm.FuelAmount" placeholder="More Fuel" />
             <button type="submit">Refuel</button>
             <button type="reset">Cancel</button>
         </form>
@@ -366,9 +348,9 @@ ul#navbarNav li {
         <h2>Drive Van</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="DriveVan" />
-            <input type="text" name="VanID" placeholder="Van ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
-            <input type="text" name="Destination" placeholder="Destination" />
+            <input type="text" name="DriveVanForm.VanID" placeholder="Van ID" />
+            <input type="number" name="DriveVanForm.Tag" placeholder="Tag" />
+            <input type="text" name="DriveVanForm.Destination" placeholder="Destination" />
             <button type="submit">Drive</button>
             <button type="reset">Cancel</button>
         </form>
@@ -379,11 +361,11 @@ ul#navbarNav li {
         <h2>Purchase Product</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="PurchaseProduct" />
-            <input type="text" name="LongName" placeholder="Business Name" />
-            <input type="text" name="ProductID" placeholder="Product ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
-            <input type="text" name="Barcode" placeholder="Barcode" />
-            <input type="number" name="Quantity" placeholder="Quantity" />
+            <input type="text" name="PurchaseProductForm.LongName" placeholder="Business Name" />
+            <input type="text" name="PurchaseProductForm.ID" placeholder="Product ID" />
+            <input type="number" name="PurchaseProductForm.Tag" placeholder="Tag" />
+            <input type="text" name="PurchaseProductForm.Barcode" placeholder="Barcode" />
+            <input type="number" name="PurchaseProductForm.Quantity" placeholder="Quantity" />
             <button type="submit">Purchase</button>
             <button type="reset">Cancel</button>
         </form>
@@ -394,7 +376,7 @@ ul#navbarNav li {
         <h2>Remove Product</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="RemoveProduct" />
-            <input type="text" name="Barcode" placeholder="Barcode" />
+            <input type="text" name="RemoveProductForm.Barcode" placeholder="Barcode" />
             <button type="submit">Remove</button>
             <button type="reset">Cancel</button>
         </form>
@@ -405,8 +387,8 @@ ul#navbarNav li {
         <h2>Remove Van</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="RemoveVan" />
-            <input type="text" name="VanID" placeholder="Van ID" />
-            <input type="number" name="Tag" placeholder="Tag" />
+            <input type="text" name="RemoveVanForm.VanID" placeholder="Van ID" />
+            <input type="number" name="RemoveVanForm.Tag" placeholder="Tag" />
             <button type="submit">Remove</button>
             <button type="reset">Cancel</button>
         </form>
@@ -417,11 +399,12 @@ ul#navbarNav li {
         <h2>Remove Driver Role</h2>
         <form method="post">
             <input type="hidden" name="FormId" value="RemoveDriverRole" />
-            <input type="text" name="Username" placeholder="Username" />
+            <input type="text" name="RemoveDriverRoleForm.Username" placeholder="Username" />
             <button type="submit">Remove</button>
             <button type="reset">Cancel</button>
         </form>
     </div>
 </div>
+
 
 </body>
