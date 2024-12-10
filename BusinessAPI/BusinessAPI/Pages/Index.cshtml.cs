@@ -52,6 +52,11 @@ public class IndexModel : PageModel
     public RemoveVanModel RemoveVanForm { get; set; }
     [BindProperty]
     public RemoveDriverRoleModel RemoveDriverRoleForm { get; set; }
+    
+    [BindProperty]
+    public StartFundingModel StartFundingForm { get; set; } 
+    [BindProperty]
+    public AddLocationModel AddLocationForm { get; set; }  
 
     public async Task<IActionResult> OnPostAsync()
     {
@@ -184,7 +189,23 @@ public class IndexModel : PageModel
                         PurchaseProductForm.Quantity
                     );
                     break;
+                case "StartFunding":  
+                    await _repository.StartFunding(
+                        StartFundingForm.Username,
+                        StartFundingForm.Invested,
+                        StartFundingForm.Business,
+                        StartFundingForm.InvestedDate
+                    );
+                    break;
 
+                case "AddLocation": // Added AddLocation logic
+                    await _repository.AddLocation(
+                        AddLocationForm.Label,
+                        AddLocationForm.XCoord,
+                        AddLocationForm.YCoord,
+                        AddLocationForm.Space
+                    );
+                    break;
                 case "RemoveProduct":
                     await _repository.RemoveProduct(
                         RemoveProductForm.Barcode
@@ -347,3 +368,20 @@ public class RemoveDriverRoleModel
 {
     public string Username { get; set; }
 }
+
+public class StartFundingModel
+{
+    public string Username { get; set; }
+    public int Invested { get; set; }
+    public string Business { get; set; }
+    public DateTime InvestedDate { get; set; }
+}
+
+public class AddLocationModel
+{
+    public string Label { get; set; }
+    public int XCoord { get; set; }
+    public int YCoord { get; set; }
+    public int Space { get; set; }
+}
+

@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fixed views again">
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix some viewmodel nonsense">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +21,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/DAL/Models/Views/DriverView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
@@ -246,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733825361896</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix some viewmodel nonsense">
+      <option name="closed" value="true" />
+      <created>1733825797056</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733825797056</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +279,7 @@
     <MESSAGE value="update version" />
     <MESSAGE value="fix views again" />
     <MESSAGE value="fixed views again" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed views again" />
+    <MESSAGE value="fix some viewmodel nonsense" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix some viewmodel nonsense" />
   </component>
 </project>
