@@ -1,0 +1,39 @@
+@page
+@model BusinessAPI.Pages.LocationViewModel
+@{
+    ViewData["Title"] = "Location View";
+}
+
+<h2>Location View</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Label</th>
+            <th>Long Name</th>
+            <th>X Coord</th>
+            <th>Y Coord</th>
+            <th>Space</th>
+            <th>Num Vans</th>
+            <th>Van IDs</th>
+            <th>Remaining Capacity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var location in Model.Locations)
+        {
+            <tr>
+                <td>@location.Label</td>
+                <td>@location.LongName</td>
+                <td>@location.XCoord</td>
+                <td>@location.YCoord</td>
+                <td>@location.Space</td>
+                <td>@location.NumVans</td>
+                <td>@location.VanIDs</td>
+                <td>@location.RemainingCapacity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>

@@ -1,0 +1,39 @@
+@page
+@model BusinessAPI.Pages.ServiceViewModel
+@{
+    ViewData["Title"] = "Service View";
+}
+
+<h2>Service View</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Long Name</th>
+            <th>Home Base</th>
+            <th>Manager</th>
+            <th>Revenue</th>
+            <th>Products Carried</th>
+            <th>Cost Carried</th>
+            <th>Weight Carried</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model.Services)
+        {
+            <tr>
+                <td>@service.Id</td>
+                <td>@service.LongName</td>
+                <td>@service.HomeBase</td>
+                <td>@service.Manager</td>
+                <td>@service.Revenue</td>
+                <td>@service.ProductsCarried</td>
+                <td>@service.CostCarried</td>
+                <td>@service.WeightCarried</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>

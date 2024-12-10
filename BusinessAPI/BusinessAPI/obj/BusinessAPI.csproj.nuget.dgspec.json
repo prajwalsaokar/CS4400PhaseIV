@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj": {}
+    "/Users/tanay/Documents/CS4400/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj": {}
   },
   "projects": {
-    "/Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj": {
+    "/Users/tanay/Documents/CS4400/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj",
+        "projectUniqueName": "/Users/tanay/Documents/CS4400/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj",
         "projectName": "BusinessAPI",
-        "projectPath": "/Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj",
-        "packagesPath": "/Users/prajwal/.nuget/packages/",
-        "outputPath": "/Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/",
+        "projectPath": "/Users/tanay/Documents/CS4400/CS4400PhaseIV/BusinessAPI/BusinessAPI/BusinessAPI.csproj",
+        "packagesPath": "/Users/tanay/.nuget/packages/",
+        "outputPath": "/Users/tanay/Documents/CS4400/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/prajwal/.nuget/NuGet/NuGet.Config"
+          "/Users/tanay/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"

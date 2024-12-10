@@ -1,0 +1,33 @@
+@page
+@model BusinessAPI.Pages.ProductViewModel
+@{
+    ViewData["Title"] = "Product View";
+}
+
+<h2>Product View</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Location</th>
+            <th>Amount Available</th>
+            <th>Low Price</th>
+            <th>High Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.ProductName</td>
+                <td>@product.Location</td>
+                <td>@product.AmountAvailable</td>
+                <td>@product.LowPrice</td>
+                <td>@product.HighPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>
