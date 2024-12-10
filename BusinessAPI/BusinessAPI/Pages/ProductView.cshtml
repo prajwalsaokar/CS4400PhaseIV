@@ -11,20 +11,20 @@
         <tr>
             <th>Product Name</th>
             <th>Location</th>
-            <th>Amount Available</th>
-            <th>Low Price</th>
-            <th>High Price</th>
+            <th>Total Packages</th>
+            <th>Min Price</th>
+            <th>Max Price</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var product in Model.Products)
         {
             <tr>
-                <td>@product.ProductName</td>
-                <td>@product.Location</td>
-                <td>@product.AmountAvailable</td>
-                <td>@product.LowPrice</td>
-                <td>@product.HighPrice</td>
+                <td>@product.product_name</td>
+                <td>@product.location</td>
+                <td>@product.total_packages</td>
+                <td>@product.min_price</td>
+                <td>@product.max_price</td>
             </tr>
         }
     </tbody>

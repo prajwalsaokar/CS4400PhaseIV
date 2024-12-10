@@ -13,9 +13,9 @@
             <th>Long Name</th>
             <th>Home Base</th>
             <th>Manager</th>
-            <th>Revenue</th>
+            <th>Total Sales</th>
             <th>Products Carried</th>
-            <th>Cost Carried</th>
+            <th>Total Cost</th>
             <th>Weight Carried</th>
         </tr>
     </thead>
@@ -23,14 +23,14 @@
         @foreach (var service in Model.Services)
         {
             <tr>
-                <td>@service.Id</td>
-                <td>@service.LongName</td>
-                <td>@service.HomeBase</td>
-                <td>@service.Manager</td>
-                <td>@service.Revenue</td>
-                <td>@service.ProductsCarried</td>
-                <td>@service.CostCarried</td>
-                <td>@service.WeightCarried</td>
+                <td>@service.id</td>
+                <td>@service.long_name</td>
+                <td>@service.home_base</td>
+                <td>@service.manager</td>
+                <td>@service.total_sales</td>
+                <td>@service.unique_products</td>
+                <td>@service.total_cost</td>
+                <td>@service.total_weight</td>
             </tr>
         }
     </tbody>

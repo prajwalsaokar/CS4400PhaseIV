@@ -4,12 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="added try catch for sql exeptions">
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="update version">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/DriverView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/DriverView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/OwnerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/OwnerView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/ProductView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/ProductView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/ServiceView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/ServiceView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/ProductView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/ProductView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/ServiceView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/ServiceView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/BusinessAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/BusinessAPI.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/BusinessAPI.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/BusinessAPI.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +34,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ed782f763dd24627a12db7a3f63ac892cca00/04/5127fe4e/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -133,7 +157,7 @@
       <workItem from="1733530025064" duration="11228000" />
       <workItem from="1733705053243" duration="5077000" />
       <workItem from="1733734686289" duration="7076000" />
-      <workItem from="1733801481550" duration="2787000" />
+      <workItem from="1733801481550" duration="5212000" />
     </task>
     <task id="LOCAL-00001" summary="update core repo">
       <option name="closed" value="true" />
@@ -215,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733813760629</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update version">
+      <option name="closed" value="true" />
+      <created>1733820191665</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733820191665</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +266,7 @@
     <MESSAGE value="improve index styling" />
     <MESSAGE value="something integrated maybe?" />
     <MESSAGE value="added try catch for sql exeptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added try catch for sql exeptions" />
+    <MESSAGE value="update version" />
+    <option name="LAST_COMMIT_MESSAGE" value="update version" />
   </component>
 </project>

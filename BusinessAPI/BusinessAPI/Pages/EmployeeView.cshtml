@@ -11,12 +11,10 @@
         <tr>
             <th>Username</th>
             <th>Tax ID</th>
-            <th>Salary</th>
             <th>Hired</th>
             <th>Experience</th>
             <th>License ID</th>
             <th>Successful Trips</th>
-            <th>Manager Status</th>
         </tr>
     </thead>
     <tbody>
@@ -27,11 +25,10 @@
                 <tr>
                     <td>@employee.Username</td>
                     <td>@employee.TaxID</td>
-                    <td>@employee.Salary.ToString("C")</td> <!-- Format as currency -->
                     <td>@employee.Hired.ToString("yyyy-MM-dd")</td> <!-- Format date -->
                     <td>@employee.Experience</td>
                     <td>@employee.LicenseID</td>
-                    <td>@employee.SuccessfulTrips</td>
+                    <td>@employee.successful_trips</td>
                     <td>@employee.Manager</td>
                 </tr>
             }

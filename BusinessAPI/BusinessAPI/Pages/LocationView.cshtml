@@ -23,14 +23,11 @@
         @foreach (var location in Model.Locations)
         {
             <tr>
-                <td>@location.Label</td>
-                <td>@location.LongName</td>
-                <td>@location.XCoord</td>
-                <td>@location.YCoord</td>
-                <td>@location.Space</td>
-                <td>@location.NumVans</td>
-                <td>@location.VanIDs</td>
-                <td>@location.RemainingCapacity</td>
+                <td>@location.LocationLabel</td>
+                <td>@location.BusinessName</td>
+                <td>@location.x_coord</td>
+                <td>@location.y_coord</td>
+                <td>@location.space</td>
             </tr>
         }
     </tbody>

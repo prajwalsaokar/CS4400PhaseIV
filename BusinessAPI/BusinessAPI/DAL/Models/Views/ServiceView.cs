@@ -1,13 +1,13 @@
 namespace BusinessAPI.DAL.Models.Views;
 public class ServiceView
 {
-    public string Id { get; set; }
-    public string LongName { get; set; }
-    public string HomeBase { get; set; }
-    public string Manager { get; set; }
-    public decimal TotalSales { get; set; }
-    public int UniqueProducts { get; set; }
-    public decimal TotalCost { get; set; }
-    public decimal TotalWeight { get; set; }
+    public string id { get; set; }
+    public string long_name { get; set; }
+    public string home_base { get; set; }
+    public string manager { get; set; }
+    public decimal total_sales { get; set; }
+    public int unique_products { get; set; }
+    public decimal total_cost { get; set; }
+    public decimal total_weight { get; set; }
 
 }

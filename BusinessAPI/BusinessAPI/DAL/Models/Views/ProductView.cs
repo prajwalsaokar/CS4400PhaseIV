@@ -1,10 +1,10 @@
 namespace BusinessAPI.DAL.Models.Views;
 public class ProductView
 {
-    public string ProductName { get; set; }
-    public string Location { get; set; }
-    public int TotalPackages { get; set; }
-    public decimal MinPrice { get; set; }
-    public decimal MaxPrice { get; set; }
+    public string product_name { get; set; }
+    public string location { get; set; }
+    public int total_packages { get; set; }
+    public decimal min_price { get; set; }
+    public decimal max_price { get; set; }
 
 }
