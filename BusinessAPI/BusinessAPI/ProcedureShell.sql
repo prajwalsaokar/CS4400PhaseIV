@@ -849,8 +849,8 @@ monies spent purchasing products by all of those businesses. And if an owner
 doesn't fund any businesses then display zeros for the highs, lows and debt. */
 -- -----------------------------------------------------------------------------
 create or replace view display_owner_view as
-select buss.username, us.first_name, us.last_name, us.address, count(fd.username) as numOfBussinesses,
-       count(b.location) as numOfPlaces, coalesce(max(b.rating), 0) as highs, coalesce(min(b.rating), 0) as lows, coalesce(sum(b.spent), 0) as debt
+select buss.username, us.first_name, us.last_name, us.address, count(fd.username) as num_businesses,
+       count(b.location) as numOfPlaces, coalesce(max(b.rating), 0) as high_ratings, coalesce(min(b.rating), 0) as low_ratings, coalesce(sum(b.spent), 0) as total_debt
 from business_owners buss left join users us on buss.username = us.username
                           left join fund fd on fd.username = buss.username
                           left join businesses b on b.long_name = fd.business
@@ -865,8 +865,8 @@ experience level, along with license identifer and driving experience (if applic
 -- -----------------------------------------------------------------------------
 create or replace view display_employee_view as
 select emp.username, emp.taxID, emp.salary, emp.hired, emp.experience,
-       case when licenseID is NULL then 'n/a' else licenseID end as licenseIdentifier,
-       case when successful_trips is NULL then 'n/a' else successful_trips end as drivingExperience,
+       case when licenseID is NULL then 'n/a' else licenseID end as licenseID,
+       case when successful_trips is NULL then 'n/a' else successful_trips end as successful_trips,
        case when ds.manager = emp.username then 'yes' else 'no' end as manager_status
 from employees emp left join drivers dr on emp.username = dr.username
                    left join delivery_services ds on emp.username = ds.manager;
@@ -878,7 +878,7 @@ For each driver, it includes the username, licenseID and drivering experience, a
 with the number of vans that they are controlling. */
 -- -----------------------------------------------------------------------------
 create or replace view display_driver_view as
-select dr.username, dr.licenseID, dr.successful_trips, count(v.driven_by) as numOfVans
+select dr.username, dr.licenseID, dr.successful_trips, count(v.driven_by) as num_vans
 from drivers dr left join vans v on dr.username = v.driven_by
 group by dr.username, dr.licenseID, dr.successful_trips;
 
@@ -928,7 +928,8 @@ of unique products along with the total cost and weight of those products being
 carried by the vans. */
 -- -----------------------------------------------------------------------------
 create or replace view display_service_view as
-select s.id, s.long_name, s.home_base, s.manager, (SELECT SUM(sales) FROM vans WHERE id = s.id) as revenue, COUNT(DISTINCT contain.barcode) as products_carried, SUM(contain.price * contain.quantity) as cost_carried, SUM(products.weight * contain.quantity) as weight_carried
+select s.id, s.long_name, s.home_base, s.manager, (SELECT SUM(sales) FROM vans WHERE id = s.id) as total_revenue, COUNT(DISTINCT contain.barcode) as total_products, SUM(contain.price * contain.quantity) as total_cost, 
+       SUM(products.weight * contain.quantity) as total_weight
 FROM delivery_services s LEFT JOIN vans on s.id = vans.id LEFT JOIN contain on vans.id = contain.id and vans.tag = contain.tag
                          LEFT JOIN products on contain.barcode = products.barcode
 GROUP BY s.id, s.long_name, s.home_base, s.manager;

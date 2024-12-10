@@ -7,6 +7,6 @@ public class EmployeeView
     public int Experience { get; set; }
     public string? LicenseID { get; set; }
     public int? successful_trips { get; set; }
-    public string Manager { get; set; }
+    public string manager_status { get; set; }
 
 }

@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix views again">
+      <change afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/DriverView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/DriverView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/EmployeeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/LocationView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/Views/LocationView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
