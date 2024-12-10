@@ -1,5 +1,5 @@
 @page
-@model BusinessAPI.Pages.IndexModel
+@* @model BusinessAPI.Pages.IndexModel *@
 
 <head>
     <meta charset="UTF-8">
@@ -150,261 +150,230 @@ ul#navbarNav li {
         </ul>
     </nav>
 
-<div class="procedures">
-    <!-- Add Owner -->
-    <div class="procedure">
-        <h2>Add Owner</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddOwner" />
-            <input type="text" name="AddOwnerForm.Username" placeholder="Username" />
-            <input type="text" name="AddOwnerForm.FirstName" placeholder="First Name" />
-            <input type="text" name="AddOwnerForm.LastName" placeholder="Last Name" />
-            <input type="text" name="AddOwnerForm.Address" placeholder="Address" />
-            <input type="date" name="AddOwnerForm.Birthdate" placeholder="Birthdate" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Add Employee -->
-    <div class="procedure">
-        <h2>Add Employee</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddEmployee" />
-            <input type="text" name="AddEmployeeForm.Username" placeholder="Username" />
-            <input type="text" name="AddEmployeeForm.FirstName" placeholder="First Name" />
-            <input type="text" name="AddEmployeeForm.LastName" placeholder="Last Name" />
-            <input type="text" name="AddEmployeeForm.Address" placeholder="Address" />
-            <input type="date" name="AddEmployeeForm.Birthdate" placeholder="Birthdate" />
-            <input type="text" name="AddEmployeeForm.TaxID" placeholder="Tax ID" />
-            <input type="date" name="AddEmployeeForm.HiredDate" placeholder="Hired Date" />
-            <input type="number" name="AddEmployeeForm.Salary" placeholder="Salary" />
-            <input type="number" name="AddEmployeeForm.Experience" placeholder="Experience" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Add Driver Role -->
-    <div class="procedure">
-        <h2>Add Driver Role</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddDriverRole" />
-            <input type="text" name="AddDriverRoleForm.Username" placeholder="Username" />
-            <input type="text" name="AddDriverRoleForm.LicenseID" placeholder="License ID" />
-            <input type="text" name="AddDriverRoleForm.LicenseType" placeholder="License Type" />
-            <input type="number" name="AddDriverRoleForm.DriverExperience" placeholder="Driver Experience" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Add Product -->
-    <div class="procedure">
-        <h2>Add Product</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddProduct" />
-            <input type="text" name="AddProductForm.Barcode" placeholder="Barcode" />
-            <input type="text" name="AddProductForm.Name" placeholder="Name" />
-            <input type="number" name="AddProductForm.Weight" placeholder="Weight" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Add Van -->
-    <div class="procedure">
-        <h2>Add Van</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddVan" />
-            <input type="text" name="AddVanForm.VanID" placeholder="Van ID" />
-            <input type="number" name="AddVanForm.Tag" placeholder="Tag" />
-            <input type="number" name="AddVanForm.Fuel" placeholder="Fuel Amount" />
-            <input type="number" name="AddVanForm.Capacity" placeholder="Load Capacity" />
-            <input type="number" name="AddVanForm.Sales" placeholder="Sales" />
-            <input type="text" name="AddVanForm.DrivenBy" placeholder="Driven By" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Add Business -->
-    <div class="procedure">
-        <h2>Add Business</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="AddBusiness" />
-            <input type="text" name="AddBusinessForm.LongName" placeholder="Long Name" />
-            <input type="number" name="AddBusinessForm.Rating" placeholder="Rating" />
-            <input type="number" name="AddBusinessForm.Spent" placeholder="Spent" />
-            <input type="text" name="AddBusinessForm.Location" placeholder="Location" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
+<!-- Add Owner -->
 <div class="procedure">
-    <h2>Add Location</h2>
+    <h2>Add Owner</h2>
     <form method="post">
-        <input type="hidden" name="FormId" value="AddLocation" />
-        <input type="text" name="AddLocationForm.Label" placeholder="Label" />
-        <input type="number" name="AddLocationForm.XCoord" placeholder="X Coordinate" />
-        <input type="number" name="AddLocationForm.YCoord" placeholder="Y Coordinate" />
-        <input type="number" name="AddLocationForm.Space" placeholder="Space" />
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="first_name" placeholder="First Name" />
+        <input type="text" name="last_name" placeholder="Last Name" />
+        <input type="text" name="address" placeholder="Address" />
+        <input type="date" name="birthdate" placeholder="Birthdate" />
         <button type="submit">Add</button>
         <button type="reset">Cancel</button>
     </form>
 </div>
-    <div class="procedure">
-        <h2>Start Funding</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="StartFunding" />
-            <input type="text" name="StartFundingForm.Username" placeholder="Username" />
-            <input type="number" name="StartFundingForm.Invested" placeholder="Amount" />
-            <input type="text" name="StartFundingForm.Business" placeholder="Business" />
-            <input type="date" name="StartFundingForm.InvestedDate" placeholder="Fund Date" />
-            <button type="submit">Start</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
 
-    <!-- Hire Employee -->
-    <div class="procedure">
-        <h2>Hire Employee</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="HireEmployee" />
-            <input type="text" name="HireEmployeeForm.Username" placeholder="Username" />
-            <input type="text" name="HireEmployeeForm.ID" placeholder="ID" />
-            <button type="submit">Hire</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Fire Employee -->
-    <div class="procedure">
-        <h2>Fire Employee</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="FireEmployee" />
-            <input type="text" name="FireEmployeeForm.Username" placeholder="Username" />
-            <input type="text" name="FireEmployeeForm.ID" placeholder="ID" />
-            <button type="submit">Remove</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Manage Service -->
-    <div class="procedure">
-        <h2>Manage Service</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="ManageService" />
-            <input type="text" name="ManageServiceForm.ID" placeholder="ID" />
-            <input type="text" name="ManageServiceForm.Username" placeholder="Username" />
-            <button type="submit">Begin</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Takeover Van -->
-    <div class="procedure">
-        <h2>Takeover Van</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="TakeOverVan" />
-            <input type="text" name="TakeOverVanForm.Username" placeholder="Username" />
-            <input type="text" name="TakeOverVanForm.VanID" placeholder="Van ID" />
-            <input type="number" name="TakeOverVanForm.Tag" placeholder="Tag" />
-            <button type="submit">Add</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Load Van -->
-    <div class="procedure">
-        <h2>Load Van</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="LoadVan" />
-            <input type="text" name="LoadVanForm.VanID" placeholder="Van ID" />
-            <input type="number" name="LoadVanForm.Tag" placeholder="Tag" />
-            <input type="text" name="LoadVanForm.Barcode" placeholder="Barcode" />
-            <input type="number" name="LoadVanForm.Quantity" placeholder="Num. Packages" />
-            <input type="number" name="LoadVanForm.Price" placeholder="Price" />
-            <button type="submit">Deliver</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Refuel Van -->
-    <div class="procedure">
-        <h2>Refuel Van</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="RefuelVan" />
-            <input type="text" name="RefuelVanForm.VanID" placeholder="Van ID" />
-            <input type="number" name="RefuelVanForm.Tag" placeholder="Tag" />
-            <input type="number" name="RefuelVanForm.FuelAmount" placeholder="More Fuel" />
-            <button type="submit">Refuel</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Drive Van -->
-    <div class="procedure">
-        <h2>Drive Van</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="DriveVan" />
-            <input type="text" name="DriveVanForm.VanID" placeholder="Van ID" />
-            <input type="number" name="DriveVanForm.Tag" placeholder="Tag" />
-            <input type="text" name="DriveVanForm.Destination" placeholder="Destination" />
-            <button type="submit">Drive</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Purchase Product -->
-    <div class="procedure">
-        <h2>Purchase Product</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="PurchaseProduct" />
-            <input type="text" name="PurchaseProductForm.LongName" placeholder="Business Name" />
-            <input type="text" name="PurchaseProductForm.ID" placeholder="Product ID" />
-            <input type="number" name="PurchaseProductForm.Tag" placeholder="Tag" />
-            <input type="text" name="PurchaseProductForm.Barcode" placeholder="Barcode" />
-            <input type="number" name="PurchaseProductForm.Quantity" placeholder="Quantity" />
-            <button type="submit">Purchase</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Remove Product -->
-    <div class="procedure">
-        <h2>Remove Product</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="RemoveProduct" />
-            <input type="text" name="RemoveProductForm.Barcode" placeholder="Barcode" />
-            <button type="submit">Remove</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Remove Van -->
-    <div class="procedure">
-        <h2>Remove Van</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="RemoveVan" />
-            <input type="text" name="RemoveVanForm.VanID" placeholder="Van ID" />
-            <input type="number" name="RemoveVanForm.Tag" placeholder="Tag" />
-            <button type="submit">Remove</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
-
-    <!-- Remove Driver Role -->
-    <div class="procedure">
-        <h2>Remove Driver Role</h2>
-        <form method="post">
-            <input type="hidden" name="FormId" value="RemoveDriverRole" />
-            <input type="text" name="RemoveDriverRoleForm.Username" placeholder="Username" />
-            <button type="submit">Remove</button>
-            <button type="reset">Cancel</button>
-        </form>
-    </div>
+<!-- Add Employee -->
+<div class="procedure">
+    <h2>Add Employee</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="first_name" placeholder="First Name" />
+        <input type="text" name="last_name" placeholder="Last Name" />
+        <input type="text" name="address" placeholder="Address" />
+        <input type="date" name="birthdate" placeholder="Birthdate" />
+        <input type="text" name="tax_id" placeholder="Tax ID" />
+        <input type="date" name="hired_date" placeholder="Hired Date" />
+        <input type="number" name="salary" placeholder="Salary" />
+        <input type="number" name="experience" placeholder="Experience" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
 </div>
 
+<!-- Add Driver Role -->
+<div class="procedure">
+    <h2>Add Driver Role</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="license_id" placeholder="License ID" />
+        <input type="text" name="license_type" placeholder="License Type" />
+        <input type="number" name="driver_experience" placeholder="Driver Experience" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Add Product -->
+<div class="procedure">
+    <h2>Add Product</h2>
+    <form method="post">
+        <input type="text" name="barcode" placeholder="Barcode" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="number" name="weight" placeholder="Weight" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Add Van -->
+<div class="procedure">
+    <h2>Add Van</h2>
+    <form method="post">
+        <input type="text" name="van_id" placeholder="Van ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <input type="number" name="fuel" placeholder="Fuel Amount" />
+        <input type="number" name="capacity" placeholder="Load Capacity" />
+        <input type="number" name="sales" placeholder="Sales" />
+        <input type="text" name="driven_by" placeholder="Driven By" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Add Business -->
+<div class="procedure">
+    <h2>Add Business</h2>
+    <form method="post">
+        <input type="text" name="long_name" placeholder="Long Name" />
+        <input type="number" name="rating" placeholder="Rating" />
+        <input type="number" name="spent" placeholder="Spent" />
+        <input type="text" name="location" placeholder="Location" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Start Funding -->
+<div class="procedure">
+    <h2>Start Funding</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="number" name="invested" placeholder="Amount" />
+        <input type="text" name="business" placeholder="Business" />
+        <input type="date" name="invested_date" placeholder="Fund Date" />
+        <button type="submit">Start</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Hire Employee -->
+<div class="procedure">
+    <h2>Hire Employee</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="id" placeholder="ID" />
+        <button type="submit">Hire</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Fire Employee -->
+<div class="procedure">
+    <h2>Fire Employee</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="id" placeholder="ID" />
+        <button type="submit">Remove</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Manage Service -->
+<div class="procedure">
+    <h2>Manage Service</h2>
+    <form method="post">
+        <input type="text" name="id" placeholder="ID" />
+        <input type="text" name="username" placeholder="Username" />
+        <button type="submit">Begin</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Takeover Van -->
+<div class="procedure">
+    <h2>Takeover Van</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <input type="text" name="van_id" placeholder="Van ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Load Van -->
+<div class="procedure">
+    <h2>Load Van</h2>
+    <form method="post">
+        <input type="text" name="van_id" placeholder="Van ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <input type="text" name="barcode" placeholder="Barcode" />
+        <input type="number" name="quantity" placeholder="Num. Packages" />
+        <input type="number" name="price" placeholder="Price" />
+        <button type="submit">Deliver</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Refuel Van -->
+<div class="procedure">
+    <h2>Refuel Van</h2>
+    <form method="post">
+        <input type="text" name="van_id" placeholder="Van ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <input type="number" name="fuel_amount" placeholder="More Fuel" />
+        <button type="submit">Refuel</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Drive Van -->
+<div class="procedure">
+    <h2>Drive Van</h2>
+    <form method="post">
+        <input type="text" name="van_id" placeholder="Van ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <input type="text" name="destination" placeholder="Destination" />
+        <button type="submit">Drive</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Purchase Product -->
+<div class="procedure">
+    <h2>Purchase Product</h2>
+    <form method="post">
+        <input type="text" name="long_name" placeholder="Business Name" />
+        <input type="text" name="id" placeholder="Product ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <input type="text" name="barcode" placeholder="Barcode" />
+        <input type="number" name="quantity" placeholder="Quantity" />
+        <button type="submit">Purchase</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Remove Product -->
+<div class="procedure">
+    <h2>Remove Product</h2>
+    <form method="post">
+        <input type="text" name="barcode" placeholder="Barcode" />
+        <button type="submit">Remove</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Remove Van -->
+<div class="procedure">
+    <h2>Remove Van</h2>
+    <form method="post">
+        <input type="text" name="van_id" placeholder="Van ID" />
+        <input type="number" name="tag" placeholder="Tag" />
+        <button type="submit">Remove</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
+
+<!-- Remove Driver Role -->
+<div class="procedure">
+    <h2>Remove Driver Role</h2>
+    <form method="post">
+        <input type="text" name="username" placeholder="Username" />
+        <button type="submit">Remove</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
 
 </body>

@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix location view model again">
+      <change afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/DTO/DataTransferObjects.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/ProductView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/ProductView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/ServiceView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/ServiceView.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,33 +55,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.BusinessAPI: http.executor": "Run",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Docker.BusinessAPI/Dockerfile.executor": "Run",
-    "HTTP Request.BusinessAPI | #1.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.BusinessAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.BusinessAPI/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.BusinessAPI | #1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "rider.external.source.directories": [
-      "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/Users/prajwal/.local/share/Symbols/src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/prajwal/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.BusinessAPI: http">
     <configuration name="BusinessAPI | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />

@@ -2,7 +2,6 @@
 
 
 ###
-POST {{BusinessAPI_HostAddress}}/Index HTTP/1.1
+POST {{BusinessAPI_HostAddress}}/add-location HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
-
-FormId=AddLocation&AddLocationForm.Label=TestLocation&AddLocationForm.XCoord=123&AddLocationForm.YCoord=456&AddLocationForm.Space=100
+label=NewYork&xCoord=40&yCoord=40&space=40
