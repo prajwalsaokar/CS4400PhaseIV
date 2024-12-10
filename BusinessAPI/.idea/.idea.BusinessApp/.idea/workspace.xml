@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="improve index styling">
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="something integrated maybe?">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
@@ -24,6 +22,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/Pages/DriverView.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/Pages/EmployeeView.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ed782f763dd24627a12db7a3f63ac892cca00/04/5127fe4e/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -40,32 +39,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.BusinessAPI: http.executor": "Run",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Docker.BusinessAPI/Dockerfile.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.BusinessAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.BusinessAPI/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "rider.external.source.directories": [
-      "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/Users/prajwal/.local/share/Symbols/src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/prajwal/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/prajwal/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.BusinessAPI: http">
     <configuration name="BusinessAPI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/BusinessAPI/BusinessAPI.csproj" />
@@ -136,7 +135,8 @@
       <updated>1733530021220</updated>
       <workItem from="1733530025064" duration="11228000" />
       <workItem from="1733705053243" duration="5077000" />
-      <workItem from="1733734686289" duration="6983000" />
+      <workItem from="1733734686289" duration="7076000" />
+      <workItem from="1733801481550" duration="1768000" />
     </task>
     <task id="LOCAL-00001" summary="update core repo">
       <option name="closed" value="true" />
@@ -202,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733739751808</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="something integrated maybe?">
+      <option name="closed" value="true" />
+      <created>1733741749015</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1733741749015</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +227,7 @@
     <MESSAGE value="fixed all current view codes" />
     <MESSAGE value="fix html code" />
     <MESSAGE value="improve index styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve index styling" />
+    <MESSAGE value="something integrated maybe?" />
+    <option name="LAST_COMMIT_MESSAGE" value="something integrated maybe?" />
   </component>
 </project>

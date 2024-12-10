@@ -22,19 +22,25 @@ drop procedure if exists add_owner;
 delimiter //
 create procedure add_owner (in ip_username varchar(40), in ip_first_name varchar(100),
                             in ip_last_name varchar(100), in ip_address varchar(500), in ip_birthdate date)
-    sp_main: begin
+sp_main: begin
+    -- ensure parameters not null
+    if ip_username is null or ip_first_name is null or ip_last_name is null or ip_address is null or
+       ip_birthdate is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure new owner has a unique username
-    DECLARE username_count INT;
-    -- Check if alr exists
-SELECT COUNT(*) INTO username_count FROM users WHERE username = ip_username;
+    if ip_username in (select username from users) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    if ip_username in (select username from business_owners) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if; -- in theory, not needed but it's an extra check
 
--- If the username doesn't exist, add the new owner
-IF username_count = 0 THEN
-        INSERT INTO users (username, first_name, last_name, address, birthdate)
-        VALUES (ip_username, ip_first_name, ip_last_name, ip_address, ip_birthdate);
-INSERT INTO business_owners (username)
-VALUES (ip_username);
-END IF;
+    insert into users values (ip_username, ip_first_name, ip_last_name, ip_address, ip_birthdate);
+    insert into business_owners values (ip_username);
 end //
 delimiter ;
 
@@ -49,13 +55,32 @@ create procedure add_employee (in ip_username varchar(40), in ip_first_name varc
                                in ip_last_name varchar(100), in ip_address varchar(500), in ip_birthdate date,
                                in ip_taxID varchar(40), in ip_hired date, in ip_employee_experience integer,
                                in ip_salary integer)
-    sp_main: begin
-    -- ensure new owner has a unique username
+sp_main: begin
+    -- ensure parameters not null
+    if ip_username is null or ip_first_name is null or ip_last_name is null or ip_address is null
+        or ip_birthdate is null or ip_taxID is null or ip_hired is null or ip_employee_experience is null
+        or ip_salary is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure new employee has a unique username
     -- ensure new employee has a unique tax identifier
-    IF ip_username NOT IN (Select username from users) and ip_first_name NOT IN (Select id from delivery_services) THEN
-    INSERT INTO users VALUES(ip_username, ip_first_name, ip_last_name, ip_address, ip_birthdate);
-INSERT INTO employees VALUES(ip_username, ip_taxID, ip_hired, ip_employee_experience, ip_salary);
-END IF;
+    if ip_username in (select username from users) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    if ip_username in (select username from employees) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if; -- in theory, not needed but it's an extra check
+    if ip_taxID in (select taxID from employees) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- add employee info
+    insert into users values (ip_username, ip_first_name, ip_last_name, ip_address, ip_birthdate);
+    insert into employees values (ip_username, ip_taxID, ip_hired, ip_employee_experience, ip_salary);
 end //
 delimiter ;
 
@@ -68,14 +93,39 @@ drop procedure if exists add_driver_role;
 delimiter //
 create procedure add_driver_role (in ip_username varchar(40), in ip_licenseID varchar(40),
                                   in ip_license_type varchar(40), in ip_driver_experience integer)
-    sp_main: begin
-    -- ensure employee exists and is not a worker
-    -- ensure new driver has a unique license identifier
-    IF ip_username IN (select username from employees) and 
-    ip_username NOT IN (select username from workers) and
-    ip_license_type NOT IN (Select licenseID from drivers) THEN
-    INSERT INTO drivers VALUES(ip_username, ip_licenseID, ip_license_type, ip_driver_experience);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_username is null or ip_licenseID is null or ip_license_type is null or ip_driver_experience is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure that the user exists
+    if ip_username not in (select username from users) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+        -- Ensure that the user is an employee
+    elseif ip_username not in (select username from employees) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+        -- Ensure that the licenseID is unique among other drivers
+    elseif ip_licenseID in (select licenseID from drivers where username != ip_username) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    else
+        -- Check if the employee is already a driver
+        if ip_username in (select username from drivers) then
+            -- Update driver information
+            update drivers
+            set licenseID = ip_licenseID,
+                license_type = ip_license_type,
+                successful_trips = ip_driver_experience
+            where username = ip_username;
+        else
+            -- Insert into drivers table
+            insert into drivers (username, licenseID, license_type, successful_trips)
+            values (ip_username, ip_licenseID, ip_license_type, ip_driver_experience);
+        end if;
+    end if;
 end //
 delimiter ;
 
@@ -86,13 +136,29 @@ delimiter ;
 drop procedure if exists add_worker_role;
 delimiter //
 create procedure add_worker_role (in ip_username varchar(40))
-    sp_main: begin
-    -- ensure employee exists and is not a driver
-    IF EXISTS(Select 1 from employees where ip_username=username) and
-    NOT EXISTS(Select 1 from drivers where ip_username=username)
-    THEN
-    INSERT INTO workers VALUES(ip_username);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_username is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure the user exists
+    if ip_username not in (select username from users) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure the employee exists
+    if ip_username not in (select username from employees) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure the employee is not already a worker
+    if ip_username in (select username from workers) then
+        SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'Invalid input.';;
+    end if;
+
+    -- Insert into workers table
+    insert into workers values (ip_username);
 end //
 delimiter ;
 
@@ -105,18 +171,20 @@ drop procedure if exists add_product;
 delimiter //
 create procedure add_product (in ip_barcode varchar(40), in ip_name varchar(100),
                               in ip_weight integer)
-    sp_main: begin
-	-- ensure new product doesn't already exist
-    DECLARE barcode_count INT;
-
-    -- Check if the barcode already exists
-SELECT COUNT(*) INTO barcode_count FROM products WHERE barcode = ip_barcode;
-
--- barcode doesn't exist, add the new product
-IF barcode_count = 0 THEN
-        INSERT INTO products (barcode, iname, weight)
-        VALUES (ip_barcode, ip_name, ip_weight);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_barcode is null or ip_name is null then
+        SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'Invalid input.';;
+    end if;
+    -- Check if the product already exists
+    if ip_barcode in (select barcode from products) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    else
+        -- Insert the product
+        insert into products (barcode, iname, weight)
+        values (ip_barcode, ip_name, ip_weight);
+    end if;
 end //
 delimiter ;
 
@@ -131,62 +199,31 @@ drop procedure if exists add_van;
 delimiter //
 create procedure add_van (in ip_id varchar(40), in ip_tag integer, in ip_fuel integer,
                           in ip_capacity integer, in ip_sales integer, in ip_driven_by varchar(40))
-    sp_main: begin
-	-- ensure new van doesn't already exist
-    -- ensure that the delivery service exists
-    -- ensure that a valid driver will control the van
-    DECLARE service_id_count INT;
-    DECLARE van_id_tag_count INT;
-    DECLARE driver_username_count INT;
-    DECLARE home_base_location varchar(40);
-
-SELECT COUNT(*) INTO service_id_count
-FROM delivery_services
-WHERE id = ip_id;
-
-IF service_id_count = 0 THEN
-    leave sp_main;
-END IF;
-
-SELECT COUNT(*) INTO van_id_tag_count
-FROM vans
-WHERE id = ip_id AND tag = ip_tag;
-
-IF van_id_tag_count > 0 THEN
-    leave sp_main;
-END IF;
-
-SELECT COUNT(*) INTO driver_username_count
-FROM employees
-WHERE username = ip_driven_by;
-
-IF driver_username_count = 0 THEN
-    leave sp_main;
-END IF;
-
-SELECT home_base INTO home_base_location
-FROM delivery_services
-WHERE id = ip_id;
-
-INSERT INTO vans (
-    id,
-    tag,
-    fuel,
-    capacity,
-    sales,
-    driven_by,
-    located_at
-)
-VALUES (
-           ip_id,
-           ip_tag,
-           ip_fuel,
-           ip_capacity,
-           ip_sales,
-           ip_driven_by,
-           home_base_location
-
-       );
+sp_main: begin
+    declare home_base_van varchar(40);
+    -- ensure parameters not null
+    if ip_id is null or ip_tag is null or ip_fuel is null or ip_capacity is null or ip_sales is null
+        or ip_driven_by is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Check if the van tag is unique
+    if ip_id not in (select id from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    elseif ip_tag in (select tag from vans) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+        -- Check if the driver exists
+    elseif ip_driven_by not in (select username from drivers) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    else
+        -- Insert the van
+        select home_base into home_base_van from delivery_services where id = ip_id limit 1;
+        insert into vans (id, tag, fuel, capacity, sales, driven_by, located_at)
+        values (ip_id, ip_tag, ip_fuel, ip_capacity, ip_sales, ip_driven_by, home_base_van);
+    END IF;
 end //
 delimiter ;
 
@@ -201,15 +238,32 @@ drop procedure if exists add_business;
 delimiter //
 create procedure add_business (in ip_long_name varchar(40), in ip_rating integer,
                                in ip_spent integer, in ip_location varchar(40))
-    sp_main: begin
-	-- ensure new business doesn't already exist
-    -- ensure that the location is valid
-    -- ensure that the rating is valid (i.e., between 1 and 5 inclusively)
-    IF ip_long_name NOT IN (Select long_name from businesses) and 
-    ip_location IN (Select label from locations) and
-    ip_rating BETWEEN 1 and 5 THEN
-    INSERT INTO businesses VALUES(ip_long_name, ip_rating, ip_spent, ip_location);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_long_name is null or ip_rating is null or ip_spent is null
+        or ip_location then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure business name is unique
+    if ip_long_name in (select long_name from businesses) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure location is valid
+    if ip_location not in (select label from locations) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Ensure rating is between 1 and 5
+    if ip_rating < 1 or ip_rating > 5 then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- Insert new business
+    insert into businesses (long_name, rating, spent, location)
+    values (ip_long_name, ip_rating, ip_spent, ip_location);
 end //
 delimiter ;
 
@@ -222,16 +276,25 @@ drop procedure if exists add_service;
 delimiter //
 create procedure add_service (in ip_id varchar(40), in ip_long_name varchar(100),
                               in ip_home_base varchar(40), in ip_manager varchar(40))
-    sp_main: begin
-	-- ensure new delivery service doesn't already exist
-    -- ensure that the home base location is valid
-    -- ensure that the manager is valid
-    IF NOT EXISTS(Select 1 from delivery_services where id=ip_id) and
-    EXISTS(Select 1 from locations where label=ip_home_base) and
-    NOT EXISTS(Select 1 from delivery_services where manager=ip_manager)
-    THEN
-    INSERT INTO delivery_services VALUES(ip_id, ip_long_name, ip_home_base, ip_manager);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_id is null or ip_long_name is null or ip_home_base is null or ip_manager is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Check if the service ID already exists
+    if ip_id in (select id from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+        -- Check if the service name already exists
+    elseif ip_long_name in (select long_name from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    else
+        -- Insert the new service
+        INSERT INTO delivery_services (id, long_name, home_base, manager)
+        VALUES (ip_id, ip_long_name, ip_home_base, ip_manager);
+    end if;
 end //
 delimiter ;
 
@@ -244,22 +307,24 @@ drop procedure if exists add_location;
 delimiter //
 create procedure add_location (in ip_label varchar(40), in ip_x_coord integer,
                                in ip_y_coord integer, in ip_space integer)
-    sp_main: begin
-	-- ensure new location doesn't already exist
-    -- ensure that the coordinate combination is distinct
-    DECLARE label_count INT;
-    DECLARE coord_count INT;
-    
-    
-	-- Check if information already exists
-SELECT COUNT(*) INTO label_count FROM locations WHERE label = ip_label;
-SELECT COUNT(*) INTO coord_count FROM locations WHERE x_coord = ip_x_coord AND y_coord = ip_y_coord;
-
--- If the label doesn't exist and the coordinate combination is unique then add the new location
-IF label_count = 0 AND coord_count = 0 THEN
-        INSERT INTO locations (label, x_coord, y_coord, space)
-        VALUES (ip_label, ip_x_coord, ip_y_coord, ip_space);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_label is null or ip_x_coord is null or ip_y_coord is null or ip_space is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Check if the location ID already exists
+    if ip_label in (select label from locations) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    elseif (ip_x_coord, ip_y_coord) in (select x_coord, y_coord from locations) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    else
+        -- Insert the new location
+        insert into locations (label, x_coord, y_coord, space)
+        values (ip_label, ip_x_coord, ip_y_coord, ip_space);
+    end if;
 end //
 delimiter ;
 
@@ -271,12 +336,25 @@ to a business. The owner and business must be valid. */
 drop procedure if exists start_funding;
 delimiter //
 create procedure start_funding (in ip_owner varchar(40), in ip_amount integer, in ip_long_name varchar(40), in ip_fund_date date)
-    sp_main: begin
-	-- ensure the owner and business are valid
-    IF EXISTS(Select 1 from businesses where long_name=ip_long_name) and 
-    EXISTS(Select 1 from business_owners where ip_owner=username) THEN
-    INSERT INTO fund VALUES(ip_owner, ip_amount, ip_fund_date, ip_long_name);
-END IF;
+sp_main: begin
+    -- ensure parameters not null
+    if ip_owner is null or ip_amount is null or ip_long_name is null or ip_fund_date is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- Check if the company exists
+    if ip_long_name not in (select long_name from businesses) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+        -- Check if the investor exists
+    elseif ip_owner not in (select username from business_owners) THEN
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    else
+        -- Insert the funding record
+        insert into fund (username, invested, invested_date, business)
+        values (ip_owner, ip_amount, ip_fund_date, ip_long_name);
+    end if;
 end //
 delimiter ;
 
@@ -289,17 +367,34 @@ not eligible to be hired.  Otherwise, the hiring is permitted. */
 drop procedure if exists hire_employee;
 delimiter //
 create procedure hire_employee (in ip_username varchar(40), in ip_id varchar(40))
-    sp_main: begin
-	-- ensure that the employee hasn't already been hired by that service
-	-- ensure that the employee and delivery service are valid
-    -- ensure that the employee isn't a manager for another 
-    IF NOT EXISTS(Select 1 from work_for where username=ip_username and id=ip_id) and
-    ip_username IN (Select username from employees) and 
-    ip_id IN (Select id from delivery_services) and
-    NOT EXISTS(Select 1 from delivery_services where id<>ip_id and manager=ip_username)
-    THEN
-    INSERT INTO work_for VALUES(ip_username, ip_id);
-END IF;
+sp_main: begin
+    -- ensure parameters are not null
+    if ip_username is null or ip_id is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the employee hasn't already been hired by that service
+    if ip_username in (select username from work_for where id=ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the employee and delivery service are valid
+    if ip_username not in (select username from employees) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    if ip_id not in (select id from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the employee isn't a manager for another service
+    if ip_username in (select manager from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- otherwise, hiring is permitted
+    insert into work_for values(ip_username, ip_id);
 end //
 delimiter ;
 
@@ -312,13 +407,25 @@ for the service. Otherwise, the firing is permitted. */
 drop procedure if exists fire_employee;
 delimiter //
 create procedure fire_employee (in ip_username varchar(40), in ip_id varchar(40))
-    sp_main: begin
-	-- ensure that the employee is currently working for the service
+sp_main: begin
+    -- ensure parameters are not null
+    if ip_username is null or ip_id is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the employee is currently working for the service
+    if ip_username not in (select username from work_for) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the employee isn't an active manager
-    IF EXISTS(Select 1 from work_for where ip_username=username and ip_id=id) and
-    NOT EXISTS(Select 1 from delivery_services where ip_username=manager) THEN
-DELETE FROM work_for WHERE username=ip_username and id=ip_id;
-END IF;
+    if ip_username in (select manager from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- otherwise, firing is permitted
+    delete from work_for where username = ip_username and id = ip_id;
 end //
 delimiter ;
 
@@ -332,29 +439,26 @@ to manager is permitted.  The current manager is simply replaced. */
 drop procedure if exists manage_service;
 delimiter //
 create procedure manage_service (in ip_username varchar(40), in ip_id varchar(40))
-    sp_main: begin
-	-- ensure that the employee is currently working for the service
+sp_main: begin
+    -- ensure parameters are not null
+    if ip_username is null or ip_id is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the employee isn't working for any other services
-    
-    DECLARE worker_count INT;
-    DECLARE other_services_count INT;
-
+    if ip_username in (select username from work_for where id != ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the employee is currently working for the service
-SELECT COUNT(*) INTO worker_count
-FROM work_for
-WHERE username = ip_username AND id = ip_id;
+    if ip_username not in (select username from work_for where id = ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
 
--- ensure that the employee isn't working for any other services
-SELECT COUNT(*) INTO other_services_count
-FROM work_for
-WHERE username = ip_username AND id != ip_id;
-
--- If conditions are met, appoint the worker as the new manager
-IF worker_count > 0 AND other_services_count = 0 THEN
-UPDATE delivery_services
-SET manager = ip_username
-WHERE id = ip_id;
-END IF;
+    -- otherwise, the appointment to manager is permitted
+    -- since the current manager is replaced, we can just use update
+    update delivery_services set manager = ip_username where id = ip_id;
 end //
 delimiter ;
 
@@ -368,37 +472,31 @@ drop procedure if exists takeover_van;
 delimiter //
 create procedure takeover_van (in ip_username varchar(40), in ip_id varchar(40),
                                in ip_tag integer)
-    sp_main: begin
-	-- ensure that the driver is not driving for another service
-	-- ensure that the selected van is owned by the same service
+sp_main: begin
+    -- ensure parameters are not null
+    if ip_username is null or ip_id is null or ip_tag is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the driver is not driving for another service
+    if ip_username in (select username from work_for where id != ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the selected van is owned by the same service
+    if ip_tag not in (select tag from vans where id = ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the employee is a valid driver
-    if not exists (
-        select 1
-        from drivers d
-        where d.username = ip_username
-    ) then
-        leave sp_main;
-end if;
+    if ip_username not in (select username from drivers where licenseID is not null or license_type is not null) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
 
-    if not exists (
-        select 1
-        from vans
-        where id = ip_id and tag = ip_tag
-    ) then
-        leave sp_main;
-end if;
-
-    if exists (
-        select 1
-        from vans
-        where driven_by = ip_username and id != ip_id
-    ) then
-        leave sp_main;
-end if;
-
-update vans
-set driven_by = ip_username
-where id = ip_id and tag = ip_tag;
+    -- driver is allowed to take control
+    -- since the current controller of the van is simply relieved of those duties, we can use update
+    update vans set driven_by = ip_username where tag = ip_tag and id = ip_id;
 end //
 delimiter ;
 
@@ -414,42 +512,59 @@ The change/delta quantity value must be positive, and must be added to the quant
 of the product already loaded onto the van as applicable.  And if the product
 already exists on the van, then the existing price must not be changed. */
 -- -----------------------------------------------------------------------------
-DROP PROCEDURE IF EXISTS load_van;
-DELIMITER //
-CREATE PROCEDURE load_van (
-    IN van_id VARCHAR(40),
-    IN van_tag INT,
-    IN product_barcode VARCHAR(40),
-    IN new_package_qty INT,
-    IN package_price INT
-)
-    proc_block: BEGIN
-    IF (van_id, van_tag) NOT IN (SELECT id, tag FROM vans) THEN LEAVE proc_block;
-END IF;
-    IF product_barcode NOT IN (SELECT barcode FROM products) THEN LEAVE proc_block;
-END IF;
-    IF (SELECT located_at FROM vans WHERE id = van_id AND tag = van_tag) 
-       <> (SELECT home_base FROM delivery_services WHERE id = van_id) THEN LEAVE proc_block;
-END IF;
+drop procedure if exists load_van;
+delimiter //
+create procedure load_van (in ip_id varchar(40), in ip_tag integer, in ip_barcode varchar(40),
+                           in ip_more_packages integer, in ip_price integer)
+sp_main: begin
+    -- declare variables
+    declare vanLocatedAt varchar(40);
+    declare vanCapacity integer;
 
-    IF new_package_qty <= 0 THEN LEAVE proc_block;
-END IF;
-
-  
-    IF (SELECT SUM(quantity)
-        FROM contain WHERE id = van_id AND tag = van_tag) + new_package_qty 
-       > (SELECT capacity FROM vans WHERE id = van_id AND tag = van_tag) THEn LEAVE proc_block;
-END IF;
-    IF product_barcode IN (SELECT barcode FROM contain where id = van_id AND tag = van_tag) THEN UPDATE contain SET quantity = quantity + new_package_qty
-                                                                                                 WHERE id = van_id AND tag = van_tag AND barcode = product_barcode;
-LEAVE proc_block;
-END IF;
-
-INSERT INTO contain (id, tag, barcode, quantity, price)
-VALUES (van_id, van_tag, product_barcode, new_package_qty, package_price);
-END //
-DELIMITER ;
-
+    -- ensure parameters are not null
+    if ip_id is null or ip_tag is null or ip_barcode is null or ip_more_packages is null or ip_price is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van being loaded is owned by the service
+    if ip_tag not in (select tag from vans where id = ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the product is valid
+    if ip_barcode not in (select barcode from products) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van is located at the service home base
+    set vanLocatedAt = (select located_at from vans where id = ip_id and tag = ip_tag);
+    if vanLocatedAt not in (select home_base from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the quantity of new packages is greater than zero
+    if ip_more_packages = 0 then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van has sufficient capacity to carry the new packages
+    set vanCapacity = (select capacity from vans where id = ip_id and tag = ip_tag);
+    if vanCapacity < ip_more_packages then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- add more of the product to the van
+    -- if the product is already loaded
+    if ip_barcode in (select barcode from contain where ip_id = id and ip_tag = tag) then
+        -- new packages must be added to the quantity of the product already loaded onto the van so update
+        update contain set quantity = ip_more_packages + quantity
+        where ip_barcode = barcode and ip_id = id and ip_tag = tag;
+        -- otherwise, since the product is not already loaded, insert into contain table
+    else
+        insert into contain value(ip_id, ip_tag, ip_barcode, ip_more_packages, ip_price);
+    end if;
+end //
+delimiter ;
 
 -- [16] refuel_van()
 -- -----------------------------------------------------------------------------
@@ -459,14 +574,30 @@ be refueled if it's located at the delivery service's home base. */
 drop procedure if exists refuel_van;
 delimiter //
 create procedure refuel_van (in ip_id varchar(40), in ip_tag integer, in ip_more_fuel integer)
-    sp_main: begin
-	-- ensure that the van being switched is valid and owned by the service
+sp_main: begin
+    -- declare variables
+    declare vanLocatedAt varchar(40);
+
+    -- ensure parameters are not null
+    if ip_id is null or ip_tag is null or ip_more_fuel is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van being switched is valid and owned by the service
+    if ip_tag not in (select tag from vans where id = ip_id) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the van is located at the service home base
-    IF EXISTS(Select 1 from vans where id=ip_id and tag=ip_tag) and
-    EXISTS(Select 1 from vans v join delivery_services ds ON v.id=ds.id where ds.home_base=v.located_at)
-    THEN
-UPDATE vans SET fuel=fuel+ip_more_fuel WHERE id=ip_id and tag=ip_tag;
-END IF;
+    set vanLocatedAt = (select located_at from vans where id = ip_id and tag = ip_tag);
+    if vanLocatedAt not in (select home_base from delivery_services) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- van can be refueled
+    update vans set fuel = ip_more_fuel + fuel
+    where id = ip_id and tag = ip_tag;
 end //
 delimiter ;
 
@@ -485,59 +616,61 @@ delimiter //
 create function fuel_required (ip_departure varchar(40), ip_arrival varchar(40))
     returns integer reads sql data
 begin
-	if (ip_departure = ip_arrival) then return 0;
-else return (select 1 + truncate(sqrt(power(arrival.x_coord - departure.x_coord, 2) + power(arrival.y_coord - departure.y_coord, 2)), 0) as fuel
-		from (select x_coord, y_coord from locations where label = ip_departure) as departure,
-        (select x_coord, y_coord from locations where label = ip_arrival) as arrival);
-end if;
+    if (ip_departure = ip_arrival) then return 0;
+    else return (select 1 + truncate(sqrt(power(arrival.x_coord - departure.x_coord, 2) + power(arrival.y_coord - departure.y_coord, 2)), 0) as fuel
+                 from (select x_coord, y_coord from locations where label = ip_departure) as departure,
+                      (select x_coord, y_coord from locations where label = ip_arrival) as arrival);
+    end if;
 end //
 delimiter ;
 
-DROP PROCEDURE IF EXISTS drive_van;
-DELIMITER //
-CREATE PROCEDURE drive_van (
-    IN van_id VARCHAR(40),
-    IN van_tag INT,
-    IN destination_label VARCHAR(40)
-)
-    proc_block: BEGIN
+drop procedure if exists drive_van;
+delimiter //
+create procedure drive_van (in ip_id varchar(40), in ip_tag integer, in ip_destination varchar(40))
+sp_main: begin
+    -- declare variables
+    declare vanLocatedAt varchar(40);
+    declare vanFuel integer;
+    declare homeBase varchar(40);
 
-    DECLARE base_location VARCHAR(40);
-    DECLARE current_position VARCHAR(40);
-    DECLARE fuel_needed_to_dest INT;
-    DECLARE fuel_needed_to_base INT;
-    DECLARE fuel_available INT;
-    DECLARE space_available INT;
+    -- ensure parameters are not null
+    if ip_id is null or ip_tag is null or ip_destination is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the destination is a valid location
+    if ip_destination not in (select label from locations) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van isn't already at the location
+    set vanLocatedAt = (select located_at from vans where id = ip_id and tag = ip_tag);
+    if ip_destination = vanLocatedAt then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van has enough fuel to reach the destination and (then) home base
+    set vanFuel = (select fuel from vans where id = ip_id and tag = ip_tag);
+    set homeBase = (select home_base from delivery_services where id = ip_id);
+    if vanFuel < (fuel_required(vanLocatedAt, ip_destination) + fuel_required(ip_destination, homeBase)) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van has enough space at the destination for the trip
+    if (select space from locations where label = ip_destination) = 0 then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
 
-SELECT home_base INTO base_location FROM delivery_services WHERE id = van_id;
-SELECT located_at, fuel INTO current_position, fuel_available FROM vans WHERE id = van_id AND tag = van_tag;
--- Check of location is valid
-IF destination_label NOT IN (SELECT label FROM locations) THEN LEAVE proc_block;
-END IF;
-    IF current_position = destination_label THEN LEAVE proc_block;
-END IF;
+    -- update driver's experience (successful trips)
+    update drivers set successful_trips = successful_trips + 1
+    where username in (select driven_by from vans where id = ip_id and tag = ip_tag);
 
-    SET fuel_needed_to_dest = fuel_required(current_position, destination_label);
-    SET fuel_needed_to_base = fuel_required(destination_label, base_location);
-    
-    -- Fuel check
-    IF fuel_available < (fuel_needed_to_dest + fuel_needed_to_base) THEN LEAVE proc_block;
-END IF;
-SELECT space INTO space_available FROM locations WHERE label = destination_label;
-
-IF space_available IS NOT NULL AND space_available < 1 THEN LEAVE proc_block;
-END IF;
-
-UPDATE vans SET located_at = destination_label, fuel = fuel - fuel_needed_to_dest
-WHERE id = van_id AND tag = van_tag;
-
-UPDATE drivers
-SET successful_trips = successful_trips + 1
-WHERE username = (SELECT driven_by FROM vans WHERE id = van_id AND tag = van_tag);
-
-END //
-DELIMITER ;
-
+    -- also, update van's fuel and destination
+    update vans set fuel = fuel - fuel_required(vanLocatedAt, ip_destination), located_at = ip_destination
+    where id = ip_id and tag = ip_tag;
+end //
+delimiter ;
 
 -- [18] purchase_product()
 -- -----------------------------------------------------------------------------
@@ -552,66 +685,63 @@ drop procedure if exists purchase_product;
 delimiter //
 create procedure purchase_product (in ip_long_name varchar(40), in ip_id varchar(40),
                                    in ip_tag integer, in ip_barcode varchar(40), in ip_quantity integer)
-    sp_main: begin
-	-- ensure that the business is valid
-    -- ensure that the van is valid and exists at the business's location
-	-- ensure that the van has enough of the requested product
-	-- update the van's payload
-    -- update the monies spent and gained for the van and business
-    -- ensure all quantities in the contain table are greater than zero
-    declare product_price integer;	
-    declare total_cost integer;
-    
-    if ip_long_name is null or ip_id is null or ip_tag is null or 
-       ip_barcode is null or ip_quantity is null or ip_quantity <= 0 then
-	leave sp_main;
-end if;
-    
+sp_main: begin
+    -- declare variables
+    declare vanLocatedAt varchar(40);
+    declare businessLocation varchar(40);
+    declare vanQuantity integer;
+    declare productCost integer;
+    declare totalCost integer;
+    declare businessFunds integer;
+    declare busFunds int;
+    declare totalSpent int;
+
+    -- ensure parameters not null
+    if ip_long_name is null or ip_id is null or ip_tag is null or ip_barcode is null or ip_quantity is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the business is valid
     if ip_long_name not in (select long_name from businesses) then
-        leave sp_main;
-end if;
-    
-    if (ip_id, ip_tag) not in (
-        select v.id, v.tag 
-        from vans v
-        join businesses b on v.located_at = b.location
-        where b.long_name = ip_long_name
-    ) then
-        leave sp_main;
-end if;
-    
-    if (ip_id, ip_tag, ip_barcode) not in (
-        select id, tag, barcode 
-        from contain
-    ) then
-        leave sp_main;
-end if;
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure business has enough money to purchase products
+    set productCost = (select price from contain where id = ip_id and tag = ip_tag and barcode = ip_barcode);
+    IF productCost is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end IF;
+    set totalCost = productCost * ip_quantity;
+    set busFunds = (select sum(invested) from fund where business = ip_long_name);
+    set totalSpent = (select spent from businesses where long_name = ip_long_name);
+    if busFunds - totalSpent < totalCost then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van is valid and exists at the business's location
+    set vanLocatedAt = (select located_at from vans where id = ip_id and tag = ip_tag);
+    set businessLocation = (select location from businesses where long_name = ip_long_name);
+    if vanLocatedAt != businessLocation then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van has enough of the requested product
+    set vanQuantity = (select quantity from contain where id = ip_id and tag = ip_tag and barcode = ip_barcode);
+    if vanQuantity < ip_quantity then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- update the van's payload
+    update contain set quantity = quantity - ip_quantity
+    where barcode = ip_barcode and id = ip_id and tag = ip_tag;
+    -- update the monies spent and gained for the van and business
+    update businesses set spent = spent + totalCost where long_name = ip_long_name;
+    update vans set sales = sales + totalCost where id = ip_id and tag = ip_tag;
 
-    if ip_quantity > (
-        select quantity 
-        from contain 
-        where id = ip_id and tag = ip_tag and barcode = ip_barcode
-    ) then
-        leave sp_main;
-end if;
-
-select price into product_price
-from contain
-where id = ip_id and tag = ip_tag and barcode = ip_barcode;
-set total_cost = product_price * ip_quantity;
-
-update contain
-set quantity = quantity - ip_quantity
-where id = ip_id and tag = ip_tag and barcode = ip_barcode;
-
-update vans
-set sales = sales + total_cost
-where id = ip_id and tag = ip_tag;
-
-update businesses
-set spent = spent + total_cost
-where long_name = ip_long_name;
-delete from contain where quantity <= 0;
+    -- ensure all quantities in the contain table are greater than zero
+    -- to do this, we can simply just delete the entries with quantities of zero
+    delete from contain where quantity = 0;
 end //
 delimiter ;
 
@@ -623,14 +753,25 @@ occur if, and only if, the product is not being carried by any vans. */
 drop procedure if exists remove_product;
 delimiter //
 create procedure remove_product (in ip_barcode varchar(40))
-    sp_main: begin
-	-- ensure that the product exists
+sp_main: begin
+    -- ensure parameters not null
+    if ip_barcode is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the product exists
+    if ip_barcode not in (select barcode from products) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the product is not being carried by any vans
-    IF ip_barcode IN (Select barcode from products) and
-    ip_barcode NOT IN (Select barcode from contain)
-    THEN
-DELETE FROM products WHERE barcode=ip_barcode;
-END IF;
+    if ip_barcode in (select barcode from contain) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- remove product from system
+    delete from products where barcode = ip_barcode;
 end //
 delimiter ;
 
@@ -642,15 +783,25 @@ occur if, and only if, the van is not carrying any products.*/
 drop procedure if exists remove_van;
 delimiter //
 create procedure remove_van (in ip_id varchar(40), in ip_tag integer)
-    sp_main: begin
-	-- ensure that the van exists
+sp_main: begin
+    -- ensure parameters not null
+    if ip_id is null or ip_tag is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the van exists
+    if (ip_id, ip_tag) not in (select id, tag from vans) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the van is not carrying any products
-    IF EXISTS(Select 1 from vans where id=ip_id and tag=ip_tag) and
-    NOT EXISTS(Select 1 from contain where id=ip_id and tag=ip_tag and quantity>0)
-    THEN
-    #DELETE FROM contain WHERE tag=ip_tag and id=ip_id;
-DELETE FROM vans WHERE tag=ip_tag and id=ip_id;
-END IF;
+    if (ip_id, ip_tag) in (select id, tag from contain) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+
+    -- remove van from system
+    delete from vans where id = ip_id and tag = ip_tag;
 end //
 delimiter ;
 
@@ -663,30 +814,27 @@ The driver's information must be completely removed from the system. */
 drop procedure if exists remove_driver_role;
 delimiter //
 create procedure remove_driver_role (in ip_username varchar(40))
-    sp_main: begin
-	-- ensure that the driver exists
+sp_main: begin
+    -- ensure parameter not null
+    if ip_username is null then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
+    -- ensure that the driver exists
+    if ip_username not in (select username from drivers) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- ensure that the driver is not controlling any vans
+    if ip_username in (select driven_by from vans) then
+        SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Invalid input or operation.';
+    end if;
     -- remove all remaining information
-    
-    DECLARE driver_count INT;
-    DECLARE van_count INT;
-    
-    -- select the information
-SELECT COUNT(*) INTO driver_count FROM drivers WHERE username = ip_username;
-SELECT COUNT(*) INTO van_count FROM vans WHERE driven_by = ip_username;
-
-IF driver_count > 0 AND van_count = 0 THEN
-
-DELETE FROM drivers WHERE username = ip_username;
-DELETE FROM work_for WHERE username = ip_username;
-
--- Check if the employee is also a worker
-IF NOT EXISTS (SELECT 1 FROM workers WHERE username = ip_username) THEN
-
-DELETE FROM employees WHERE username = ip_username;
-DELETE FROM users WHERE username = ip_username;
-END IF;
-END IF;
+    -- instead of removing driver info from every table that the driver appears in,
+    -- if we simply remove from the root users table, then all the information will be deleted itself
+    -- through cascading
+    delete from users where username = ip_username;
 end //
 delimiter ;
 
@@ -701,38 +849,27 @@ monies spent purchasing products by all of those businesses. And if an owner
 doesn't fund any businesses then display zeros for the highs, lows and debt. */
 -- -----------------------------------------------------------------------------
 create or replace view display_owner_view as
-SELECT
-    bo.username AS username,
-    u.first_name,
-    u.last_name,
-    u.address,
-    COUNT(DISTINCT f.business) AS num_businesses,
-    COUNT(DISTINCT b.location) AS diff_places,
-    COALESCE(MAX(b.rating), 0) AS high_ratings,
-    COALESCE(MIN(b.rating), 0) AS low_ratings,
-    COALESCE(SUM(b.spent), 0) AS total_debt
-FROM business_owners bo LEFT JOIN
-     fund f ON bo.username = f.username
-                        LEFT JOIN
-     users u ON bo.username = u.username
-                        LEFT JOIN
-     businesses b ON f.business = b.long_name
-GROUP BY
-    bo.username, u.first_name, u.last_name, u.address;
+select buss.username, us.first_name, us.last_name, us.address, count(fd.username) as numOfBussinesses,
+       count(b.location) as numOfPlaces, coalesce(max(b.rating), 0) as highs, coalesce(min(b.rating), 0) as lows, coalesce(sum(b.spent), 0) as debt
+from business_owners buss left join users us on buss.username = us.username
+                          left join fund fd on fd.username = buss.username
+                          left join businesses b on b.long_name = fd.business
+group by buss.username, us.last_name, us.first_name, us.address;
 
 -- [23] display_employee_view()
 -- -----------------------------------------------------------------------------
 /* This view displays information in the system from the perspective of an employee.
-For each employee, it includes the username, tax identifier, hiring date and
-experience level, along with the license identifer and drivering experience (if
-applicable), and a 'yes' or 'no' depending on the manager status of the employee. */
+For each employee, it includes the username, tax identifier, salary, hiring date and
+experience level, along with license identifer and driving experience (if applicable,
+'n/a' if not), and a 'yes' or 'no' depending on the manager status of the employee. */
 -- -----------------------------------------------------------------------------
 create or replace view display_employee_view as
-Select e.username, e.taxID, e.salary, e.hired, e.experience, COALESCE(licenseID, 'n/a'), COALESCE(d.successful_trips, 'n/a'),
-       CASE WHEN ds.manager IS NULL THEN 'no' ELSE 'yes' END AS "manager"
-from employees e
-         left join drivers d ON d.username=e.username
-         left join delivery_services ds ON ds.manager=e.username;
+select emp.username, emp.taxID, emp.salary, emp.hired, emp.experience,
+       case when licenseID is NULL then 'n/a' else licenseID end as licenseIdentifier,
+       case when successful_trips is NULL then 'n/a' else successful_trips end as drivingExperience,
+       case when ds.manager = emp.username then 'yes' else 'no' end as manager_status
+from employees emp left join drivers dr on emp.username = dr.username
+                   left join delivery_services ds on emp.username = ds.manager;
 
 -- [24] display_driver_view()
 -- -----------------------------------------------------------------------------
@@ -741,11 +878,9 @@ For each driver, it includes the username, licenseID and drivering experience, a
 with the number of vans that they are controlling. */
 -- -----------------------------------------------------------------------------
 create or replace view display_driver_view as
-select username, licenseID, successful_trips, count(driven_by)
-from drivers d
-         left join vans v ON v.driven_by=d.username
-group by 1,2,3;
-
+select dr.username, dr.licenseID, dr.successful_trips, count(v.driven_by) as numOfVans
+from drivers dr left join vans v on dr.username = v.driven_by
+group by dr.username, dr.licenseID, dr.successful_trips;
 
 -- [25] display_location_view()
 -- -----------------------------------------------------------------------------
@@ -756,39 +891,17 @@ the identifiers of the vans at the location (sorted by the tag), and both the
 total and remaining capacity at the location. */
 -- -----------------------------------------------------------------------------
 create or replace view display_location_view as
-SELECT
-    l.label AS location_label,
-    b.business_name,
-    l.x_coord AS x_coordinate,
-    l.y_coord AS y_coordinate,
-    l.space AS total_space,
-    v.van_count AS total_vans,
-    v.van_list AS van_identifiers,
-    l.space - v.van_count AS available_capacity
-FROM
-    locations l
-        INNER JOIN (
-        SELECT
-            business.long_name AS business_name,
-            business.location_name
-        FROM (
-                 SELECT long_name, location AS location_name
-                 FROM businesses
-                 UNION
-                 SELECT ds.long_name, ds.home_base AS location_name
-                 FROM delivery_services ds
-             ) business
-    ) b
-                   ON l.label = b.location_name
-        INNER JOIN (
-        SELECT
-            vns.located_at AS location_label,
-            COUNT(*) AS van_count,
-            GROUP_CONCAT(CONCAT(vns.id, vns.tag) ORDER BY vns.tag ASC) AS van_list
-        FROM vans vns
-        GROUP BY vns.located_at
-    ) v
-                   ON l.label = v.location_label;
+select loc.label as label, COALESCE(businesses.long_name, delivery_services.long_name) AS long_name,
+       loc.x_coord as x_coord, loc.y_coord as y_coord,
+       loc.space AS space,
+       COUNT(DISTINCT CONCAT(vans.id, vans.tag)) AS num_vans,
+       GROUP_CONCAT(DISTINCT CONCAT(vans.id, vans.tag) ORDER BY vans.tag SEPARATOR ',') AS van_ids,
+       (loc.space - COUNT(DISTINCT CONCAT(vans.id, vans.tag))) AS remaining_capacity
+from locations loc
+         left join businesses on loc.label = businesses.location
+         left join delivery_services on loc.label = delivery_services.home_base
+         join vans on loc.label = vans.located_at
+group by loc.label, long_name, loc.x_coord, loc.y_coord, loc.space;
 
 -- [26] display_product_view()
 -- -----------------------------------------------------------------------------
@@ -799,22 +912,12 @@ that can be purchased and the lowest and highest prices at which the product is 
 sold at that location. */
 -- -----------------------------------------------------------------------------
 create or replace view display_product_view as
-select
-    p.iname as product_name,
-    l.label as location,
-    sum(c.quantity) as total_packages,
-    min(c.price) as min_price,
-    max(c.price) as max_price
-from
-    products p
-        join
-    contain c on p.barcode = c.barcode
-        join
-    vans v on c.id = v.id and c.tag = v.tag
-        join
-    locations l on v.located_at = l.label
-group by
-    p.iname, l.label;
+SELECT products.iname as product_name, loc.label as location, SUM(contain.quantity) as amount_available,
+       MIN(contain.price) as low_price, MAX(contain.price) as high_price
+FROM products JOIN contain ON contain.barcode = products.barcode
+              JOIN vans ON vans.id = contain.id AND vans.tag = contain.tag
+              JOIN locations loc ON vans.located_at = loc.label
+GROUP BY products.iname, loc.label;
 
 -- [27] display_service_view()
 -- -----------------------------------------------------------------------------
@@ -825,28 +928,7 @@ of unique products along with the total cost and weight of those products being
 carried by the vans. */
 -- -----------------------------------------------------------------------------
 create or replace view display_service_view as
-select ds.id, ds.long_name, ds.home_base, ds.manager,
-       v.total_sales AS "total_sales",
-       pc.unique_products AS "unique_products",
-       pc.total_cost AS "total_cost",
-       pc.total_weight AS "total_weight"
-from delivery_services ds
-         left join (Select id, SUM(sales) as total_sales
-                    from vans
-                    group by 1) v ON v.id=ds.id
-         left join (Select id, COUNT(DISTINCT c.barcode) as unique_products,
-                           SUM(price*quantity) as total_cost,
-                           SUM(weight*quantity) as total_weight
-                    from contain c
-                             left join products p ON p.barcode=c.barcode
-                    group by 1) pc ON pc.id=ds.id
--- select ds.id, ds.long_name, ds.home_base, ds.manager, 
--- SUM(v.sales) AS "total_sales", 
--- COUNT(DISTINCT c.barcode) AS "unique_products",
--- SUM(c.quantity*c.price) AS "total_cost",
--- SUM(p.weight*c.quantity) AS "total_weight"
--- from delivery_services ds
--- left join vans v ON v.id=ds.id
--- left join contain c ON c.id=v.id and c.tag=v.tag
--- left join products p ON p.barcode=c.barcode
--- group by 1,2,3,4;
+select s.id, s.long_name, s.home_base, s.manager, (SELECT SUM(sales) FROM vans WHERE id = s.id) as revenue, COUNT(DISTINCT contain.barcode) as products_carried, SUM(contain.price * contain.quantity) as cost_carried, SUM(products.weight * contain.quantity) as weight_carried
+FROM delivery_services s LEFT JOIN vans on s.id = vans.id LEFT JOIN contain on vans.id = contain.id and vans.tag = contain.tag
+                         LEFT JOIN products on contain.barcode = products.barcode
+GROUP BY s.id, s.long_name, s.home_base, s.manager;
