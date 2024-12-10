@@ -154,7 +154,7 @@ SET MESSAGE_TEXT = 'Invalid input or operation.';
     end if;
     -- Ensure the employee is not already a worker
     if ip_username in (select username from workers) then
-        SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'Invalid input.';;
+        SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'Invalid input.';
     end if;
 
     -- Insert into workers table
@@ -174,7 +174,7 @@ create procedure add_product (in ip_barcode varchar(40), in ip_name varchar(100)
 sp_main: begin
     -- ensure parameters not null
     if ip_barcode is null or ip_name is null then
-        SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'Invalid input.';;
+        SIGNAL SQLSTATE '45000'SET MESSAGE_TEXT = 'Invalid input.';
     end if;
     -- Check if the product already exists
     if ip_barcode in (select barcode from products) then
