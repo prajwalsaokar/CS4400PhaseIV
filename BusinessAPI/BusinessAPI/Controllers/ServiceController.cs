@@ -70,6 +70,13 @@ namespace BusinessAPI.Controllers
             await _coreRepository.AddBusiness(request.long_name, request.rating, request.spent, request.location);
             return Ok("Business added successfully.");
         }
+        [HttpPost("add-service")]
+        public async Task<IActionResult> AddService([FromForm] AddServiceModel request)
+        {
+            await _coreRepository.AddService(request.id, request.long_name, request.home_base, request.manager);
+            return Ok("Business added successfully.");
+        }
+
 
         [HttpPost("add-location")]
         public async Task<IActionResult> AddLocation([FromForm] AddLocationModel request)
@@ -144,21 +151,21 @@ namespace BusinessAPI.Controllers
             return Ok("Product purchased successfully.");
         }
 
-        [HttpDelete("remove-product")]
+        [HttpPost("remove-product")]
         public async Task<IActionResult> RemoveProduct([FromForm] RemoveProductModel request)
         {
             await _coreRepository.RemoveProduct(request.barcode);
             return Ok("Product removed successfully.");
         }
 
-        [HttpDelete("remove-van")]
+        [HttpPost("remove-van")]
         public async Task<IActionResult> RemoveVan([FromForm] RemoveVanModel request)
         {
             await _coreRepository.RemoveVan(request.van_id, request.tag);
             return Ok("Van removed successfully.");
         }
 
-        [HttpDelete("remove-driver-role")]
+        [HttpPost("remove-driver-role")]
         public async Task<IActionResult> RemoveDriverRole([FromForm] RemoveDriverRoleModel request)
         {
             await _coreRepository.RemoveDriverRole(request.username);

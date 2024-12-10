@@ -103,6 +103,14 @@ namespace BusinessAPI.DAL.Models
         public int tag { get; set; }
         public int fuel_amount { get; set; }
     }
+    public class AddServiceModel
+    {
+        public string id { get; set; }
+        public string long_name { get; set; }
+        public string home_base { get; set; }
+        public string manager { get; set; }
+    }
+
 
     public class DriveVanModel
     {

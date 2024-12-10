@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="fix location view model again">
-      <change afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/DTO/DataTransferObjects.cs" afterDir="false" />
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="finished styling + used controller to fix integration">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/BusinessAPI.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/DriverView.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/EmployeeView.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/Models/DTO/DataTransferObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/Models/DTO/DataTransferObjects.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/Index.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/LocationView.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/OwnerView.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/ProductView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/ProductView.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/Pages/ServiceView.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Pages/ServiceView.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733826514438</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="finished styling + used controller to fix integration">
+      <option name="closed" value="true" />
+      <created>1733835271617</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1733835271617</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +307,7 @@
     <MESSAGE value="fixed views again" />
     <MESSAGE value="fix some viewmodel nonsense" />
     <MESSAGE value="fix location view model again" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix location view model again" />
+    <MESSAGE value="finished styling + used controller to fix integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished styling + used controller to fix integration" />
   </component>
 </project>

@@ -167,7 +167,7 @@ ul#navbarNav li {
 <!-- Add Employee -->
 <div class="procedure">
     <h2>Add Employee</h2>
-    <form method="post">
+    <form method="post" action="/add-employee">
         <input type="text" name="username" placeholder="Username" />
         <input type="text" name="first_name" placeholder="First Name" />
         <input type="text" name="last_name" placeholder="Last Name" />
@@ -181,11 +181,20 @@ ul#navbarNav li {
         <button type="reset">Cancel</button>
     </form>
 </div>
+<!-- Add Worker Role -->
+<div class="procedure">
+    <h2>Add Worker Role</h2>
+    <form method="post" action="/add-worker-role">
+        <input type="text" name="username" placeholder="Username" />
+        <button type="submit">Add</button>
+        <button type="reset">Cancel</button>
+    </form>
+</div>
 
 <!-- Add Driver Role -->
 <div class="procedure">
     <h2>Add Driver Role</h2>
-    <form method="post">
+    <form method="post" action="/add-driver-role">
         <input type="text" name="username" placeholder="Username" />
         <input type="text" name="license_id" placeholder="License ID" />
         <input type="text" name="license_type" placeholder="License Type" />
@@ -198,7 +207,7 @@ ul#navbarNav li {
 <!-- Add Product -->
 <div class="procedure">
     <h2>Add Product</h2>
-    <form method="post">
+    <form method="post" action="/add-product">
         <input type="text" name="barcode" placeholder="Barcode" />
         <input type="text" name="name" placeholder="Name" />
         <input type="number" name="weight" placeholder="Weight" />
@@ -210,7 +219,7 @@ ul#navbarNav li {
 <!-- Add Van -->
 <div class="procedure">
     <h2>Add Van</h2>
-    <form method="post">
+    <form method="post" action="/add-van">
         <input type="text" name="van_id" placeholder="Van ID" />
         <input type="number" name="tag" placeholder="Tag" />
         <input type="number" name="fuel" placeholder="Fuel Amount" />
@@ -225,7 +234,7 @@ ul#navbarNav li {
 <!-- Add Business -->
 <div class="procedure">
     <h2>Add Business</h2>
-    <form method="post">
+    <form method="post" action="/add-business">
         <input type="text" name="long_name" placeholder="Long Name" />
         <input type="number" name="rating" placeholder="Rating" />
         <input type="number" name="spent" placeholder="Spent" />
@@ -234,11 +243,35 @@ ul#navbarNav li {
         <button type="reset">Cancel</button>
     </form>
 </div>
+    <!-- Add Service -->
+    <div class="procedure">
+        <h2>Add Service</h2>
+        <form method="post" action="/add-service">
+            <input type="text" name="id" placeholder="ID" />
+            <input type="text" name="long_name" placeholder="Long Name" />
+            <input type="text" name="home_base" placeholder="Home Base" />
+            <input type="text" name="manager" placeholder="Manager" />
+            <button type="submit">Add</button>
+            <button type="reset">Cancel</button>
+        </form>
+    </div>
+
+    <div class="procedure">
+        <h2>Add Location</h2>
+        <form method="post" action = "/add-location">
+            <input type="text" name="label" placeholder="Label" />
+            <input type="number" name="xCoord" placeholder="X Coordinate" />
+            <input type="number" name="yCoord" placeholder="Y Coordinate" />
+            <input type="number" name="space" placeholder="Space" />
+            <button type="submit">Add</button>
+            <button type="reset">Cancel</button>
+        </form>
+    </div>
 
 <!-- Start Funding -->
 <div class="procedure">
     <h2>Start Funding</h2>
-    <form method="post">
+    <form method="post" action="/start-funding">
         <input type="text" name="username" placeholder="Username" />
         <input type="number" name="invested" placeholder="Amount" />
         <input type="text" name="business" placeholder="Business" />
@@ -251,7 +284,7 @@ ul#navbarNav li {
 <!-- Hire Employee -->
 <div class="procedure">
     <h2>Hire Employee</h2>
-    <form method="post">
+    <form method="post" action="/hire-employee">
         <input type="text" name="username" placeholder="Username" />
         <input type="text" name="id" placeholder="ID" />
         <button type="submit">Hire</button>
@@ -262,7 +295,7 @@ ul#navbarNav li {
 <!-- Fire Employee -->
 <div class="procedure">
     <h2>Fire Employee</h2>
-    <form method="post">
+    <form method="post" action="/fire-employee">
         <input type="text" name="username" placeholder="Username" />
         <input type="text" name="id" placeholder="ID" />
         <button type="submit">Remove</button>
@@ -273,7 +306,7 @@ ul#navbarNav li {
 <!-- Manage Service -->
 <div class="procedure">
     <h2>Manage Service</h2>
-    <form method="post">
+    <form method="post" action="/manage-service">
         <input type="text" name="id" placeholder="ID" />
         <input type="text" name="username" placeholder="Username" />
         <button type="submit">Begin</button>
@@ -284,7 +317,7 @@ ul#navbarNav li {
 <!-- Takeover Van -->
 <div class="procedure">
     <h2>Takeover Van</h2>
-    <form method="post">
+    <form method="post" action="/takeover-van">
         <input type="text" name="username" placeholder="Username" />
         <input type="text" name="van_id" placeholder="Van ID" />
         <input type="number" name="tag" placeholder="Tag" />
@@ -296,7 +329,7 @@ ul#navbarNav li {
 <!-- Load Van -->
 <div class="procedure">
     <h2>Load Van</h2>
-    <form method="post">
+    <form method="post" action="/load-van">
         <input type="text" name="van_id" placeholder="Van ID" />
         <input type="number" name="tag" placeholder="Tag" />
         <input type="text" name="barcode" placeholder="Barcode" />
@@ -310,7 +343,7 @@ ul#navbarNav li {
 <!-- Refuel Van -->
 <div class="procedure">
     <h2>Refuel Van</h2>
-    <form method="post">
+    <form method="post" action="/refuel-van">
         <input type="text" name="van_id" placeholder="Van ID" />
         <input type="number" name="tag" placeholder="Tag" />
         <input type="number" name="fuel_amount" placeholder="More Fuel" />
@@ -322,7 +355,7 @@ ul#navbarNav li {
 <!-- Drive Van -->
 <div class="procedure">
     <h2>Drive Van</h2>
-    <form method="post">
+    <form method="post" action="/drive-van">
         <input type="text" name="van_id" placeholder="Van ID" />
         <input type="number" name="tag" placeholder="Tag" />
         <input type="text" name="destination" placeholder="Destination" />
@@ -334,7 +367,7 @@ ul#navbarNav li {
 <!-- Purchase Product -->
 <div class="procedure">
     <h2>Purchase Product</h2>
-    <form method="post">
+    <form method="post" action="/purchase-product">
         <input type="text" name="long_name" placeholder="Business Name" />
         <input type="text" name="id" placeholder="Product ID" />
         <input type="number" name="tag" placeholder="Tag" />
@@ -348,7 +381,7 @@ ul#navbarNav li {
 <!-- Remove Product -->
 <div class="procedure">
     <h2>Remove Product</h2>
-    <form method="post">
+    <form method="post" action="/remove-product">
         <input type="text" name="barcode" placeholder="Barcode" />
         <button type="submit">Remove</button>
         <button type="reset">Cancel</button>
@@ -358,7 +391,7 @@ ul#navbarNav li {
 <!-- Remove Van -->
 <div class="procedure">
     <h2>Remove Van</h2>
-    <form method="post">
+    <form method="post" action="/remove-van">
         <input type="text" name="van_id" placeholder="Van ID" />
         <input type="number" name="tag" placeholder="Tag" />
         <button type="submit">Remove</button>
@@ -369,7 +402,7 @@ ul#navbarNav li {
 <!-- Remove Driver Role -->
 <div class="procedure">
     <h2>Remove Driver Role</h2>
-    <form method="post">
+    <form method="post" action="/remove-driver-role">
         <input type="text" name="username" placeholder="Username" />
         <button type="submit">Remove</button>
         <button type="reset">Cancel</button>
