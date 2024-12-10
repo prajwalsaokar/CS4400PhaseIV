@@ -23,6 +23,7 @@ namespace BusinessAPI.DAL
         {
             if (ex.SqlState == "45000")
             {
+                Console.WriteLine("Database error");
                 throw new InvalidOperationException("A custom database error occurred.", ex);
             }
         }

@@ -5,7 +5,6 @@ using BusinessAPI.DAL.Models.Views;
 
 namespace BusinessAPI.Controllers
 {
-    [Route("api/v1")]
     [ApiController]
     public class BusinessController : ControllerBase
     {
@@ -73,7 +72,7 @@ namespace BusinessAPI.Controllers
         }
 
         [HttpPost("add-location")]
-        public async Task<IActionResult> AddLocation([FromForm] string label, int xCoord, int yCoord, int? space)
+        public async Task<IActionResult> AddLocation(string label, int xCoord, int yCoord, int? space)
         {
             await _coreRepository.AddLocation(label, xCoord, yCoord, space);
             return Ok("Location added successfully.");

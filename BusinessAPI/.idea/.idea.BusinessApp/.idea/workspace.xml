@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="something integrated maybe?">
+    <list default="true" id="f25e1d0d-3d25-45d0-aed6-9f3dcb3a9733" name="Changes" comment="added try catch for sql exeptions">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BusinessApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/Controllers/ServiceController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/DAL/CoreRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/ProcedureShell.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
@@ -20,9 +20,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/Pages/DriverView.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/Pages/EmployeeView.cshtml.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/prajwal/Documents/code/CS4400PhaseIV/BusinessAPI/BusinessAPI/obj/Debug/net8.0/BusinessAPI.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ed782f763dd24627a12db7a3f63ac892cca00/04/5127fe4e/ControllerEndpointRouteBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -136,7 +133,7 @@
       <workItem from="1733530025064" duration="11228000" />
       <workItem from="1733705053243" duration="5077000" />
       <workItem from="1733734686289" duration="7076000" />
-      <workItem from="1733801481550" duration="1768000" />
+      <workItem from="1733801481550" duration="2787000" />
     </task>
     <task id="LOCAL-00001" summary="update core repo">
       <option name="closed" value="true" />
@@ -210,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733741749015</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added try catch for sql exeptions">
+      <option name="closed" value="true" />
+      <created>1733813760629</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733813760629</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +233,7 @@
     <MESSAGE value="fix html code" />
     <MESSAGE value="improve index styling" />
     <MESSAGE value="something integrated maybe?" />
-    <option name="LAST_COMMIT_MESSAGE" value="something integrated maybe?" />
+    <MESSAGE value="added try catch for sql exeptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added try catch for sql exeptions" />
   </component>
 </project>
