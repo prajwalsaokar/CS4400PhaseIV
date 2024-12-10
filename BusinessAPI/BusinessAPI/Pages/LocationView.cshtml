@@ -4,33 +4,94 @@
     ViewData["Title"] = "Location View";
 }
 
-<h2>Location View</h2>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Label</th>
-            <th>Long Name</th>
-            <th>X Coord</th>
-            <th>Y Coord</th>
-            <th>Space</th>
-            <th>Num Vans</th>
-            <th>Van IDs</th>
-            <th>Remaining Capacity</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var location in Model.Locations)
-        {
-            <tr>
-                <td>@location.LocationLabel</td>
-                <td>@location.BusinessName</td>
-                <td>@location.x_coord</td>
-                <td>@location.y_coord</td>
-                <td>@location.space</td>
-            </tr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Supply System - Location View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
         }
-    </tbody>
-</table>
-
-<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #444;
+        }
+        .view-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Location View</h2>
+    <div class="view-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Long Name</th>
+                    <th>X Coord</th>
+                    <th>Y Coord</th>
+                    <th>Space</th>
+                    <th>Num Vans</th>
+                    <th>Van IDs</th>
+                    <th>Remaining Capacity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var location in Model.Locations)
+                {
+                    <tr>
+                        <td>@location.LocationLabel</td>
+                        <td>@location.BusinessName</td>
+                        <td>@location.x_coord</td>
+                        <td>@location.y_coord</td>
+                        <td>@location.space</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center;">
+        <a asp-page="/Index" class="btn">Back to Procedures</a>
+    </div>
+</body>

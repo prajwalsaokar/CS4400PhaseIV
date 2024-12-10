@@ -4,42 +4,104 @@
     ViewData["Title"] = "Employee View";
 }
 
-<h2>Employee View</h2>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Tax ID</th>
-            <th>Hired</th>
-            <th>Experience</th>
-            <th>License ID</th>
-            <th>Successful Trips</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Employees != null && Model.Employees.Count > 0)
-        {
-            foreach (var employee in Model.Employees)
-            {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Supply System - Employee View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #444;
+        }
+        .view-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee View</h2>
+    <div class="view-container">
+        <table>
+            <thead>
                 <tr>
-                    <td>@employee.Username</td>
-                    <td>@employee.TaxID</td>
-                    <td>@employee.Hired.ToString("yyyy-MM-dd")</td> <!-- Format date -->
-                    <td>@employee.Experience</td>
-                    <td>@employee.LicenseID</td>
-                    <td>@employee.successful_trips</td>
-                    <td>@employee.Manager</td>
+                    <th>Username</th>
+                    <th>Tax ID</th>
+                    <th>Hired</th>
+                    <th>Experience</th>
+                    <th>License ID</th>
+                    <th>Successful Trips</th>
+                    <th>Manager Status</th>
                 </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="8">No data available.</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<a asp-page="/Index" class="btn btn-primary">Back to Procedures</a>
+            </thead>
+            <tbody>
+                @if (Model.Employees != null && Model.Employees.Count > 0)
+                {
+                    foreach (var employee in Model.Employees)
+                    {
+                        <tr>
+                            <td>@employee.Username</td>
+                            <td>@employee.TaxID</td>
+                            <td>@employee.Hired.ToString("yyyy-MM-dd")</td>
+                            <td>@employee.Experience</td>
+                            <td>@employee.LicenseID</td>
+                            <td>@employee.successful_trips</td>
+                            <td>@employee.Manager</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7">No data available.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: center;">
+        <a asp-page="/Index" class="btn">Back to Procedures</a>
+    </div>
+</body>
